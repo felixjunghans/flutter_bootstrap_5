@@ -136,29 +136,41 @@ class FB5Row extends StatelessWidget {
         xxl: rowCols?.xxl,
       );
 
-      return Container(
-        padding: cp,
-        margin: cm,
-        child: Wrap(
-          alignment: alignment,
-          spacing: co ?? 0.0,
-          children: [
-            ...sortedChildren.map(
-              (e) => e._wrapChild(
-                (child) => Padding(
-                  padding: EdgeInsets.only(
-                    left: cg?.left ?? 0.0,
-                    right: cg?.right ?? 0.0,
-                    top: cg?.top ?? 0.0,
-                    bottom: cg?.bottom ?? 0.0,
+      return Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(),
+          Positioned(
+            left: -(cg?.left ?? 0.0),
+            right: -(cg?.right ?? 0.0),
+            top: -(cg?.top ?? 0.0),
+            bottom: -(cg?.bottom ?? 0.0),
+            child: Container(
+              padding: cp,
+              margin: cm,
+              child: Wrap(
+                alignment: alignment,
+                spacing: co ?? 0.0,
+                children: [
+                  ...sortedChildren.map(
+                    (e) => e._wrapChild(
+                      (child) => Padding(
+                        padding: EdgeInsets.only(
+                          left: cg?.left ?? 0.0,
+                          right: cg?.right ?? 0.0,
+                          top: cg?.top ?? 0.0,
+                          bottom: cg?.bottom ?? 0.0,
+                        ),
+                        child: child,
+                      ),
+                      defaultWidth: rc,
+                    ),
                   ),
-                  child: child,
-                ),
-                defaultWidth: rc,
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
     });
   }
