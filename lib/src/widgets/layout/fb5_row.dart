@@ -136,41 +136,36 @@ class FB5Row extends StatelessWidget {
         xxl: rowCols?.xxl,
       );
 
-      return Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(),
-          Positioned(
-            left: -(cg?.left ?? 0.0),
-            right: -(cg?.right ?? 0.0),
-            top: -(cg?.top ?? 0.0),
-            bottom: -(cg?.bottom ?? 0.0),
-            child: Container(
-              padding: cp,
-              margin: cm,
-              child: Wrap(
-                alignment: alignment,
-                spacing: co ?? 0.0,
-                children: [
-                  ...sortedChildren.map(
-                    (e) => e._wrapChild(
-                      (child) => Padding(
-                        padding: EdgeInsets.only(
-                          left: cg?.left ?? 0.0,
-                          right: cg?.right ?? 0.0,
-                          top: cg?.top ?? 0.0,
-                          bottom: cg?.bottom ?? 0.0,
-                        ),
-                        child: child,
-                      ),
-                      defaultWidth: rc,
+      final horizontalGutter =
+          constraints.maxWidth + (cg?.left ?? 0.0) + (cg?.right ?? 0.0);
+
+      return FractionallySizedBox(
+        heightFactor: null,
+        widthFactor: 1 / constraints.maxWidth * horizontalGutter,
+        child: Container(
+          padding: cp,
+          margin: cm,
+          child: Wrap(
+            alignment: alignment,
+            spacing: co ?? 0.0,
+            children: [
+              ...sortedChildren.map(
+                (e) => e._wrapChild(
+                  (child) => Padding(
+                    padding: EdgeInsets.only(
+                      left: cg?.left ?? 0.0,
+                      right: cg?.right ?? 0.0,
+                      top: cg?.top ?? 0.0,
+                      bottom: cg?.bottom ?? 0.0,
                     ),
+                    child: child,
                   ),
-                ],
+                  defaultWidth: rc,
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       );
     });
   }
