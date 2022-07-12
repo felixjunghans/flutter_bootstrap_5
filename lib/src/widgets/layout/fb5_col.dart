@@ -153,7 +153,7 @@ class FB5Col extends StatelessWidget {
       return Container(
         margin: cm,
         padding: cp,
-        width: width ?? defaultWidth,
+        width: width?.floorToDouble() ?? defaultWidth,
         height: height,
         decoration: decoration,
         foregroundDecoration: foregroundDecoration,
