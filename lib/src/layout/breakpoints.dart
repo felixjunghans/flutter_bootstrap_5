@@ -291,6 +291,43 @@ class BreakPoints {
         multiplier: 0.5,
       );
 
+  bool currentDisplay(
+    BreakPoint breakPoint, {
+    FB5ContentDisplay? fromStyle,
+    FB5ContentDisplay? xs,
+    FB5ContentDisplay? sm,
+    FB5ContentDisplay? md,
+    FB5ContentDisplay? lg,
+    FB5ContentDisplay? xl,
+    FB5ContentDisplay? xxl,
+  }) {
+    bool visible = true;
+
+    if (fromStyle != null) {
+      visible = fromStyle.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      visible = xs.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      visible = sm.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      visible = md.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      visible = lg.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      visible = xl.visible;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      visible = xxl.visible;
+    }
+
+    return visible;
+  }
+
   int _currentOrder(
     double maxWidth,
     BreakPoint breakPoint, {

@@ -1,36 +1,5 @@
 part of flutter_bootstrap5;
 
-class _RowStyle {
-  final FB5Margin? margin;
-  final FB5Padding? padding;
-  final FB5Gutter? gutter;
-  final FB5Offset? offset;
-  final _FB5RowCols? rowCols;
-
-  _RowStyle({
-    this.margin,
-    this.padding,
-    this.gutter,
-    this.offset,
-    this.rowCols,
-  });
-
-  _RowStyle copyWith({
-    FB5Margin? margin,
-    FB5Padding? padding,
-    FB5Gutter? gutter,
-    FB5Offset? offset,
-    _FB5RowCols? rowCols,
-  }) =>
-      _RowStyle(
-        margin: margin ?? this.margin,
-        padding: padding ?? this.padding,
-        gutter: gutter ?? this.gutter,
-        offset: offset ?? this.offset,
-        rowCols: rowCols ?? this.rowCols,
-      );
-}
-
 class FB5Row extends StatelessWidget {
   const FB5Row._({
     Key? key,
@@ -44,7 +13,7 @@ class FB5Row extends StatelessWidget {
     WrapAlignment alignment = WrapAlignment.start,
     required List<FB5Col> children,
   }) {
-    final style = _convertClassNamesToRowStyle(classNames);
+    final style = _convertClassNamesToWrapperStyle(classNames);
     return FB5Row._(
       style: style,
       alignment: alignment,
@@ -53,13 +22,14 @@ class FB5Row extends StatelessWidget {
   }
 
   // ignore: library_private_types_in_public_api
-  final _RowStyle? style;
+  final _WrapperStyle? style;
 
   final List<FB5Col> children;
   final WrapAlignment alignment;
 
   @override
   Widget build(BuildContext context) {
+    final display = style?.display;
     final gutter = style?.gutter;
     final offset = style?.offset;
     final padding = style?.padding;
@@ -67,6 +37,19 @@ class FB5Row extends StatelessWidget {
     final rowCols = style?.rowCols;
 
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
+      final isVisible = screenData.breakPoints.currentDisplay(
+        screenData.currentBreakPoint,
+        fromStyle: display?.defaultDisplay,
+        xs: display?.xs,
+        sm: display?.sm,
+        md: display?.md,
+        lg: display?.lg,
+        xl: display?.xl,
+        xxl: display?.xxl,
+      );
+
+      if(!isVisible) return const SizedBox.shrink();
+
       List<FB5Col> sortedChildren = children
         ..sort(
           (a, b) => a
@@ -88,8 +71,11 @@ class FB5Row extends StatelessWidget {
         xxl: gutter?.xxl,
       );
 
+      final maxWidthHorizontalGutter =
+          constraints.maxWidth + (cg?.left ?? 0.0) + (cg?.right ?? 0.0);
+
       final co = screenData.breakPoints.currentOffset(
-        constraints.maxWidth,
+        maxWidthHorizontalGutter,
         screenData.currentBreakPoint,
         fromStyle: offset?.defaultOffset,
         xs: offset?.xs,
@@ -125,7 +111,7 @@ class FB5Row extends StatelessWidget {
       );
 
       final rc = screenData.breakPoints._currentRowCols(
-        constraints.maxWidth,
+        maxWidthHorizontalGutter,
         screenData.currentBreakPoint,
         fromStyle: rowCols?.defaultOrder,
         xs: rowCols?.xs,
@@ -136,86 +122,42 @@ class FB5Row extends StatelessWidget {
         xxl: rowCols?.xxl,
       );
 
-      final horizontalGutter =
-          constraints.maxWidth + (cg?.left ?? 0.0) + (cg?.right ?? 0.0);
+      final widthFactor = double.parse(
+              (1 / constraints.maxWidth * maxWidthHorizontalGutter)
+                  .toStringAsFixed(4)) +
+          0.0001;
 
       return FractionallySizedBox(
         heightFactor: null,
-        widthFactor: 1 / constraints.maxWidth * horizontalGutter,
-        child: Container(
-          padding: cp,
-          margin: cm,
-          child: Wrap(
-            alignment: alignment,
-            spacing: co ?? 0.0,
-            children: [
-              ...sortedChildren.map(
-                (e) => e._wrapChild(
-                  (child) => Padding(
-                    padding: EdgeInsets.only(
-                      left: cg?.left ?? 0.0,
-                      right: cg?.right ?? 0.0,
-                      top: cg?.top ?? 0.0,
-                      bottom: cg?.bottom ?? 0.0,
+        widthFactor: widthFactor,
+        child: Transform.translate(
+          offset: Offset(0.0, -(cg?.top ?? 0.0)),
+          child: Container(
+            padding: cp,
+            margin: cm,
+            child: Wrap(
+              alignment: alignment,
+              spacing: co ?? 0.0,
+              children: [
+                ...sortedChildren.map(
+                  (e) => e._wrapChild(
+                    (child) => Padding(
+                      padding: EdgeInsets.only(
+                        left: cg?.left ?? 0.0,
+                        right: cg?.right ?? 0.0,
+                        top: cg?.top ?? 0.0,
+                        bottom: cg?.bottom ?? 0.0,
+                      ),
+                      child: child,
                     ),
-                    child: child,
+                    defaultWidth: rc,
                   ),
-                  defaultWidth: rc,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
     });
   }
-}
-
-_RowStyle? _convertClassNamesToRowStyle(String? classNames) {
-  if (classNames == null) return null;
-
-  final classList = classNames.trim().split(" ");
-  var style = _RowStyle();
-
-  for (final className in classList) {
-    final prefix = className.trim().split("-").first;
-
-    if (prefix.isEmpty) continue;
-
-    // use prefix substring to include all possible classes
-    // e.g m, mt, mb, etc.
-    switch (prefix.substring(0, 1)) {
-      case 'm':
-        var margin = style.margin ?? FB5Margin();
-        final newMargin = margin._copyWithClass(className) as FB5Margin;
-        style = style.copyWith(margin: newMargin);
-        break;
-      case 'p':
-        var padding = style.padding ?? FB5Padding();
-        final newPadding = padding._copyWithClass(className) as FB5Padding;
-        style = style.copyWith(padding: newPadding);
-        break;
-      case 'g':
-        var gutter = style.gutter ?? FB5Gutter();
-        final newGutter = gutter._copyWithClass(className) as FB5Gutter;
-        style = style.copyWith(gutter: newGutter);
-        break;
-      case 'o':
-        // o can be order or offset
-        if (prefix == 'offset') {
-          var offset = style.offset ?? FB5Offset();
-          final newOffset = offset._copyWithClass(className);
-          style = style.copyWith(offset: newOffset);
-          break;
-        }
-        break;
-      case 'r':
-        var rowCols = style.rowCols ?? _FB5RowCols();
-        final newRowCols = rowCols._copyWithClass(className);
-        style = style.copyWith(rowCols: newRowCols);
-        break;
-    }
-  }
-
-  return style;
 }

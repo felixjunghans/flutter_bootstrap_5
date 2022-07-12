@@ -12,18 +12,24 @@ class Profile extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: FB5Container(
-          child: FB5Row(
-            classNames: 'g-4',
-            children: [
-              FB5Col(
-                classNames: 'col-lg-8',
-                child: const Timeline(),
-              ),
-              FB5Col(
-                classNames: 'col-lg-4',
-                child: const SideBar(),
-              ),
-            ],
+          child: Container(
+            child: Column(
+              children: [
+                FB5Row(
+                  classNames: 'g-4 mt-4',
+                  children: [
+                    FB5Col(
+                      classNames: 'col-lg-8',
+                      child: const Timeline(),
+                    ),
+                    FB5Col(
+                      classNames: 'col-lg-4',
+                      child: const SideBar(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

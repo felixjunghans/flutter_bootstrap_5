@@ -1,36 +1,5 @@
 part of flutter_bootstrap5;
 
-class _ColStyle {
-  final FB5Margin? margin;
-  final FB5Padding? padding;
-  final FB5Size? size;
-  final FB5Offset? offset;
-  final FB5Order? order;
-
-  _ColStyle({
-    this.margin,
-    this.padding,
-    this.size,
-    this.offset,
-    this.order,
-  });
-
-  _ColStyle copyWith({
-    FB5Margin? margin,
-    FB5Padding? padding,
-    FB5Size? size,
-    FB5Offset? offset,
-    FB5Order? order,
-  }) =>
-      _ColStyle(
-        margin: margin ?? this.margin,
-        padding: padding ?? this.padding,
-        size: size ?? this.size,
-        offset: offset ?? this.offset,
-        order: order ?? this.order,
-      );
-}
-
 class FB5Col extends StatelessWidget {
   const FB5Col._({
     super.key,
@@ -56,7 +25,7 @@ class FB5Col extends StatelessWidget {
     Clip clipBehavior = Clip.none,
     Widget? child,
   }) {
-    final style = _convertClassNamesToColStyle(classNames);
+    final style = _convertClassNamesToWrapperStyle(classNames);
     return FB5Col._(
       key: key,
       height: height,
@@ -71,7 +40,7 @@ class FB5Col extends StatelessWidget {
   }
 
   // ignore: library_private_types_in_public_api
-  final _ColStyle? style;
+  final _WrapperStyle? style;
   final Decoration? decoration;
   final Decoration? foregroundDecoration;
   final Matrix4? transform;
@@ -110,6 +79,7 @@ class FB5Col extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final display = style?.display;
     final size = style?.size;
     final offset = style?.offset;
     final padding = style?.padding;
@@ -117,6 +87,20 @@ class FB5Col extends StatelessWidget {
 
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       final screenData = BootstrapTheme.of(context);
+
+      final isVisible = screenData.breakPoints.currentDisplay(
+        screenData.currentBreakPoint,
+        fromStyle: display?.defaultDisplay,
+        xs: display?.xs,
+        sm: display?.sm,
+        md: display?.md,
+        lg: display?.lg,
+        xl: display?.xl,
+        xxl: display?.xxl,
+      );
+
+      if(!isVisible) return const SizedBox.shrink();
+
       final width = screenData.breakPoints.currentWidth(
         constraints.maxWidth,
         screenData.currentBreakPoint,
@@ -180,54 +164,4 @@ class FB5Col extends StatelessWidget {
       );
     });
   }
-}
-
-_ColStyle? _convertClassNamesToColStyle(String? classNames) {
-  if (classNames == null) return null;
-
-  final classList = classNames.trim().split(" ");
-  var style = _ColStyle();
-
-  for (final className in classList) {
-    final prefix = className.trim().split("-").first;
-
-    if (prefix.isEmpty) continue;
-
-    switch (prefix.substring(0, 1)) {
-      case 'm':
-        var margin = style.margin ?? FB5Margin();
-        final newMargin = margin._copyWithClass(className) as FB5Margin;
-        style = style.copyWith(margin: newMargin);
-        break;
-      case 'p':
-        var padding = style.padding ?? FB5Padding();
-        final newPadding = padding._copyWithClass(className) as FB5Padding;
-        style = style.copyWith(padding: newPadding);
-        break;
-      case 'c':
-        var size = style.size ?? FB5Size();
-        final newSize = size._copyWithClass(className);
-        style = style.copyWith(size: newSize);
-        break;
-      case 'o':
-        // o can be order or offset
-        if (prefix == 'offset') {
-          var offset = style.offset ?? FB5Offset();
-          final newOffset = offset._copyWithClass(className);
-          style = style.copyWith(offset: newOffset);
-          break;
-        }
-
-        if (prefix == 'order') {
-          var order = style.order ?? FB5Order();
-          final newOrder = order._copyWithClass(className);
-          style = style.copyWith(order: newOrder);
-          break;
-        }
-
-        break;
-    }
-  }
-
-  return style;
 }
