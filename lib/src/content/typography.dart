@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class _BootstrapTypography {
+class BootstrapTypography {
   static const FB5TextSetting h1 = FB5TextSetting(
     fontSizeMultiplier: 2.5,
     fontWeight: FontWeight.w500,
@@ -105,6 +105,7 @@ class FB5TextSetting {
   final double? viewPortMultiplier;
   final FontWeight fontWeight;
   final double height;
+  final TextStyle style;
 
   const FB5TextSetting({
     required this.fontSizeMultiplier,
@@ -112,7 +113,25 @@ class FB5TextSetting {
     required this.height,
     this.fontSizeMultiplierSmall,
     this.viewPortMultiplier,
+    this.style = const TextStyle(),
   });
+
+  FB5TextSetting copyWidth({
+    double? fontSizeMultiplier,
+    double? fontSizeMultiplierSmall,
+    double? viewPortMultiplier,
+    FontWeight? fontWeight,
+    double? height,
+    TextStyle? style,
+  }) =>
+      FB5TextSetting(
+        fontSizeMultiplier: fontSizeMultiplier ?? this.fontSizeMultiplier,
+        fontSizeMultiplierSmall:
+            fontSizeMultiplierSmall ?? this.fontSizeMultiplierSmall,
+        viewPortMultiplier: viewPortMultiplier ?? this.viewPortMultiplier,
+        fontWeight: fontWeight ?? this.fontWeight,
+        height: height ?? this.height,
+      );
 }
 
 class TextStyles {
@@ -196,26 +215,26 @@ class Typography {
   final FB5TextSetting small;
 
   const Typography({
-    this.h1 = _BootstrapTypography.h1,
-    this.h2 = _BootstrapTypography.h2,
-    this.h3 = _BootstrapTypography.h3,
-    this.h4 = _BootstrapTypography.h4,
-    this.h5 = _BootstrapTypography.h5,
-    this.h6 = _BootstrapTypography.h6,
-    this.display1 = _BootstrapTypography.display1,
-    this.display2 = _BootstrapTypography.display2,
-    this.display3 = _BootstrapTypography.display3,
-    this.display4 = _BootstrapTypography.display4,
-    this.display5 = _BootstrapTypography.display5,
-    this.display6 = _BootstrapTypography.display6,
-    this.lead = _BootstrapTypography.lead,
-    this.paragraph = _BootstrapTypography.paragraph,
-    this.small = _BootstrapTypography.small,
+    this.h1 = BootstrapTypography.h1,
+    this.h2 = BootstrapTypography.h2,
+    this.h3 = BootstrapTypography.h3,
+    this.h4 = BootstrapTypography.h4,
+    this.h5 = BootstrapTypography.h5,
+    this.h6 = BootstrapTypography.h6,
+    this.display1 = BootstrapTypography.display1,
+    this.display2 = BootstrapTypography.display2,
+    this.display3 = BootstrapTypography.display3,
+    this.display4 = BootstrapTypography.display4,
+    this.display5 = BootstrapTypography.display5,
+    this.display6 = BootstrapTypography.display6,
+    this.lead = BootstrapTypography.lead,
+    this.paragraph = BootstrapTypography.paragraph,
+    this.small = BootstrapTypography.small,
   });
 
   TextStyle _getStyle(double fontSize, Size screenSize, BreakPoint breakPoint,
       BreakPoints breakPoints, FB5TextSetting setting) {
-    final style = TextStyle(
+    final style = setting.style.copyWith(
       fontWeight: setting.fontWeight,
       height: setting.height,
     );
