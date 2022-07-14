@@ -3,99 +3,129 @@ part of flutter_bootstrap5;
 class BootstrapTypography {
   static const FB5TextSetting h1 = FB5TextSetting(
     fontSizeMultiplier: 2.5,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.375,
     viewPortMultiplier: 1.5,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting h2 = FB5TextSetting(
     fontSizeMultiplier: 2.0,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.325,
     viewPortMultiplier: 0.9,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting h3 = FB5TextSetting(
     fontSizeMultiplier: 1.75,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.3,
     viewPortMultiplier: 0.6,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting h4 = FB5TextSetting(
     fontSizeMultiplier: 1.5,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.275,
     viewPortMultiplier: 0.3,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting h5 = FB5TextSetting(
     fontSizeMultiplier: 1.25,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting h6 = FB5TextSetting(
     fontSizeMultiplier: 1.0,
-    fontWeight: FontWeight.w500,
-    height: 1.2,
+    style: TextStyle(
+      fontWeight: FontWeight.w500,
+      height: 1.2,
+    ),
   );
 
   static const FB5TextSetting display1 = FB5TextSetting(
     fontSizeMultiplier: 5.0,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.625,
     viewPortMultiplier: 4.5,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting display2 = FB5TextSetting(
     fontSizeMultiplier: 4.5,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.575,
     viewPortMultiplier: 3.9,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting display3 = FB5TextSetting(
     fontSizeMultiplier: 4.0,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.525,
     viewPortMultiplier: 3.3,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting display4 = FB5TextSetting(
     fontSizeMultiplier: 3.5,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.475,
     viewPortMultiplier: 2.7,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting display5 = FB5TextSetting(
     fontSizeMultiplier: 3.0,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.425,
     viewPortMultiplier: 2.1,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting display6 = FB5TextSetting(
     fontSizeMultiplier: 2.5,
-    fontWeight: FontWeight.w300,
-    height: 1.2,
     fontSizeMultiplierSmall: 1.375,
     viewPortMultiplier: 1.5,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+    ),
   );
   static const FB5TextSetting lead = FB5TextSetting(
     fontSizeMultiplier: 1.25,
-    fontWeight: FontWeight.w300,
-    height: 1.0,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.0,
+    ),
   );
   static const FB5TextSetting paragraph = FB5TextSetting(
     fontSizeMultiplier: 1.0,
-    fontWeight: FontWeight.w300,
-    height: 1.0,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.0,
+    ),
   );
   static const FB5TextSetting small = FB5TextSetting(
     fontSizeMultiplier: 0.875,
-    fontWeight: FontWeight.w300,
-    height: 1.0,
+    style: TextStyle(
+      fontWeight: FontWeight.w300,
+      height: 1.0,
+    ),
   );
 }
 
@@ -103,14 +133,10 @@ class FB5TextSetting {
   final double fontSizeMultiplier;
   final double? fontSizeMultiplierSmall;
   final double? viewPortMultiplier;
-  final FontWeight fontWeight;
-  final double height;
   final TextStyle style;
 
   const FB5TextSetting({
     required this.fontSizeMultiplier,
-    required this.fontWeight,
-    required this.height,
     this.fontSizeMultiplierSmall,
     this.viewPortMultiplier,
     this.style = const TextStyle(),
@@ -120,8 +146,6 @@ class FB5TextSetting {
     double? fontSizeMultiplier,
     double? fontSizeMultiplierSmall,
     double? viewPortMultiplier,
-    FontWeight? fontWeight,
-    double? height,
     TextStyle? style,
   }) =>
       FB5TextSetting(
@@ -129,8 +153,7 @@ class FB5TextSetting {
         fontSizeMultiplierSmall:
             fontSizeMultiplierSmall ?? this.fontSizeMultiplierSmall,
         viewPortMultiplier: viewPortMultiplier ?? this.viewPortMultiplier,
-        fontWeight: fontWeight ?? this.fontWeight,
-        height: height ?? this.height,
+        style: style ?? this.style,
       );
 }
 
@@ -234,10 +257,7 @@ class FB5Typography {
 
   TextStyle _getStyle(double fontSize, Size screenSize, BreakPoint breakPoint,
       BreakPoints breakPoints, FB5TextSetting setting) {
-    final style = setting.style.copyWith(
-      fontWeight: setting.fontWeight,
-      height: setting.height,
-    );
+    final style = setting.style;
 
     if (setting.fontSizeMultiplierSmall != null &&
         setting.viewPortMultiplier != null &&
