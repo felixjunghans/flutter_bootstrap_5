@@ -4,7 +4,7 @@ class FlutterBootstrap5 extends StatelessWidget {
   const FlutterBootstrap5({
     Key? key,
     this.breakPoints = const BreakPoints(),
-    this.typography = const Typography(),
+    this.typography = const FB5Typography(),
     this.containerBreakPoints = const ContainerBreakPoints(),
     this.colors = const FB5Colors(),
     this.fontSize = ScreenData.defaultFontSize,
@@ -12,7 +12,7 @@ class FlutterBootstrap5 extends StatelessWidget {
   }) : super(key: key);
 
   final BreakPoints breakPoints;
-  final Typography typography;
+  final FB5Typography typography;
   final ContainerBreakPoints containerBreakPoints;
   final FB5Colors colors;
   final double fontSize;

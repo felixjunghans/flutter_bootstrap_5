@@ -135,7 +135,7 @@ class FB5TextSetting {
 }
 
 class TextStyles {
-  final Typography typography;
+  final FB5Typography typography;
   final double fontSize;
   final Size screenSize;
   final BreakPoint breakPoint;
@@ -195,7 +195,7 @@ class TextStyles {
       fontSize, screenSize, breakPoint, breakPoints, typography.small);
 }
 
-class Typography {
+class FB5Typography {
   final FB5TextSetting h1;
   final FB5TextSetting h2;
   final FB5TextSetting h3;
@@ -214,7 +214,7 @@ class Typography {
   final FB5TextSetting paragraph;
   final FB5TextSetting small;
 
-  const Typography({
+  const FB5Typography({
     this.h1 = BootstrapTypography.h1,
     this.h2 = BootstrapTypography.h2,
     this.h3 = BootstrapTypography.h3,

@@ -54,7 +54,7 @@ class ScreenData {
   final ContainerBreakPoints containerBreakPoints;
   final BreakPoint currentBreakPoint;
   final Size screenSize;
-  final Typography typography;
+  final FB5Typography typography;
   final double fontSize;
   final FB5Colors colors;
 
@@ -68,7 +68,7 @@ class ScreenData {
         ),
         fontSize: defaultFontSize,
         containerBreakPoints: const ContainerBreakPoints(),
-        typography: const Typography(),
+        typography: const FB5Typography(),
         colors: const FB5Colors(),
       );
 
