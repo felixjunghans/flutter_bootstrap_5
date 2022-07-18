@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class _BootstrapColors {
+class BootstrapColors {
   static const Color blue = Color(0xFF0d6efd);
   static const Color indigo = Color(0xFF6610f2);
   static const Color purple = Color(0xFF6f42c1);
@@ -42,18 +42,18 @@ class FB5Colors {
   final Color white50;
 
   const FB5Colors({
-    this.primary = _BootstrapColors.blue,
-    this.secondary = _BootstrapColors.gray600,
-    this.success = _BootstrapColors.green,
-    this.danger = _BootstrapColors.red,
-    this.warning = _BootstrapColors.yellow,
-    this.info = _BootstrapColors.cyan,
-    this.light = _BootstrapColors.gray100,
-    this.dark = _BootstrapColors.gray900,
-    this.body = _BootstrapColors.gray900,
-    this.muted = _BootstrapColors.gray90075,
-    this.white = _BootstrapColors.white,
-    this.black50 = _BootstrapColors.black50,
-    this.white50 = _BootstrapColors.white50,
+    this.primary = BootstrapColors.blue,
+    this.secondary = BootstrapColors.gray600,
+    this.success = BootstrapColors.green,
+    this.danger = BootstrapColors.red,
+    this.warning = BootstrapColors.yellow,
+    this.info = BootstrapColors.cyan,
+    this.light = BootstrapColors.gray100,
+    this.dark = BootstrapColors.gray900,
+    this.body = BootstrapColors.gray900,
+    this.muted = BootstrapColors.gray90075,
+    this.white = BootstrapColors.white,
+    this.black50 = BootstrapColors.black50,
+    this.white50 = BootstrapColors.white50,
   });
 }

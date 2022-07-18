@@ -4,28 +4,23 @@ class FB5Row extends StatelessWidget {
   const FB5Row._({
     Key? key,
     this.style,
-    this.alignment = WrapAlignment.start,
     required this.children,
   }) : super(key: key);
 
   factory FB5Row({
     String? classNames,
-    WrapAlignment alignment = WrapAlignment.start,
     required List<FB5Col> children,
   }) {
     final style = _convertClassNamesToWrapperStyle(classNames);
     return FB5Row._(
       style: style,
-      alignment: alignment,
       children: children,
     );
   }
 
   // ignore: library_private_types_in_public_api
   final _WrapperStyle? style;
-
   final List<FB5Col> children;
-  final WrapAlignment alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +30,8 @@ class FB5Row extends StatelessWidget {
     final padding = style?.padding;
     final margin = style?.margin;
     final rowCols = style?.rowCols;
+    final verticalAlignment = style?.verticalAlignment;
+    final horizontalAlignment = style?.horizontalAlignment;
 
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       final isVisible = screenData.breakPoints.currentDisplay(
@@ -48,7 +45,7 @@ class FB5Row extends StatelessWidget {
         xxl: display?.xxl,
       );
 
-      if(!isVisible) return const SizedBox.shrink();
+      if (!isVisible) return const SizedBox.shrink();
 
       List<FB5Col> sortedChildren = children
         ..sort(
@@ -110,16 +107,26 @@ class FB5Row extends StatelessWidget {
         xxl: margin?.xxl,
       );
 
-      final rc = screenData.breakPoints._currentRowCols(
-        maxWidthHorizontalGutter,
+      final va = screenData.breakPoints._currentVerticalAlignment(
         screenData.currentBreakPoint,
-        fromStyle: rowCols?.defaultOrder,
-        xs: rowCols?.xs,
-        sm: rowCols?.sm,
-        md: rowCols?.md,
-        lg: rowCols?.lg,
-        xl: rowCols?.xl,
-        xxl: rowCols?.xxl,
+        fromStyle: verticalAlignment?.defaultAlignment,
+        xs: verticalAlignment?.xs,
+        sm: verticalAlignment?.sm,
+        md: verticalAlignment?.md,
+        lg: verticalAlignment?.lg,
+        xl: verticalAlignment?.xl,
+        xxl: verticalAlignment?.xxl,
+      );
+
+      final ha = screenData.breakPoints._currentHorizontalAlignment(
+        screenData.currentBreakPoint,
+        fromStyle: horizontalAlignment?.defaultAlignment,
+        xs: horizontalAlignment?.xs,
+        sm: horizontalAlignment?.sm,
+        md: horizontalAlignment?.md,
+        lg: horizontalAlignment?.lg,
+        xl: horizontalAlignment?.xl,
+        xxl: horizontalAlignment?.xxl,
       );
 
       final widthFactor = double.parse(
@@ -135,25 +142,42 @@ class FB5Row extends StatelessWidget {
           child: Container(
             padding: cp,
             margin: cm,
-            child: Wrap(
-              alignment: alignment,
-              spacing: co ?? 0.0,
-              children: [
-                ...sortedChildren.map(
-                  (e) => e._wrapChild(
-                    (child) => Padding(
-                      padding: EdgeInsets.only(
-                        left: cg?.left ?? 0.0,
-                        right: cg?.right ?? 0.0,
-                        top: cg?.top ?? 0.0,
-                        bottom: cg?.bottom ?? 0.0,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final rc = screenData.breakPoints._currentRowCols(
+                  constraints.maxWidth,
+                  screenData.currentBreakPoint,
+                  fromStyle: rowCols?.defaultOrder,
+                  xs: rowCols?.xs,
+                  sm: rowCols?.sm,
+                  md: rowCols?.md,
+                  lg: rowCols?.lg,
+                  xl: rowCols?.xl,
+                  xxl: rowCols?.xxl,
+                );
+
+                return Wrap(
+                  alignment: ha ?? WrapAlignment.start,
+                  crossAxisAlignment: va ?? WrapCrossAlignment.start,
+                  spacing: co ?? 0.0,
+                  children: [
+                    ...sortedChildren.map(
+                      (e) => e._wrapChild(
+                        (child) => Padding(
+                          padding: EdgeInsets.only(
+                            left: cg?.left ?? 0.0,
+                            right: cg?.right ?? 0.0,
+                            top: cg?.top ?? 0.0,
+                            bottom: cg?.bottom ?? 0.0,
+                          ),
+                          child: child,
+                        ),
+                        defaultWidth: rc,
                       ),
-                      child: child,
                     ),
-                    defaultWidth: rc,
-                  ),
-                ),
-              ],
+                  ],
+                );
+              }
             ),
           ),
         ),

@@ -54,7 +54,7 @@ class ScreenData {
   final ContainerBreakPoints containerBreakPoints;
   final BreakPoint currentBreakPoint;
   final Size screenSize;
-  final FB5Typography typography;
+  final FB5Typography _typography;
   final double fontSize;
   final FB5Colors colors;
 
@@ -94,7 +94,7 @@ class ScreenData {
         screenSize: screenSize,
         breakPoint: currentBreakPoint,
         breakPoints: breakPoints,
-        typography: typography,
+        typography: _typography,
       );
 
   ScreenData({
@@ -103,7 +103,7 @@ class ScreenData {
     required this.screenSize,
     required this.fontSize,
     required this.containerBreakPoints,
-    required this.typography,
+    required FB5Typography typography,
     required this.colors,
-  });
+  }) : _typography = typography;
 }

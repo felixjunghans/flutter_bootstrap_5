@@ -1,6 +1,11 @@
-import 'package:example/widgets/side_bar.dart';
-import 'package:example/widgets/timeline.dart';
+import 'package:example/cubits/app_cubit.dart';
+import 'package:example/cubits/app_state.dart';
+import 'package:example/widgets/containers.dart';
+import 'package:example/widgets/getting_started.dart';
+import 'package:example/widgets/navigation_bar.dart';
+import 'package:example/widgets/testing_area.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
 
 class Profile extends StatelessWidget {
@@ -8,86 +13,53 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: FB5Container(
-          child: Container(
-            child: Column(
-              children: [
-                FB5Row(
-                  classNames: 'p-xs-4 p-xl-0',
-                  children: [
-                    FB5Col(
-                      classNames: 'col-12',
-                      child: Container(
-                        color: Colors.blue,
-                        width: double.infinity,
-                        height: 100.0,
-                      ),
-                    ),
-                    FB5Col(
-                      classNames: 'col-lg-8 col-xxl-9',
-                      child: Container(
-                        color: Colors.green,
-                        width: double.infinity,
-                        height: 100.0,
-                      ),
-                    ),
-                    FB5Col(
-                      classNames: 'col-lg-4 col-xxl-3 mt-md-5',
-                      child: Container(
-                        color: Colors.yellow,
-                        width: double.infinity,
-                        height: 100.0,
-                        child:  FB5Row(
-                          alignment: WrapAlignment.start,
-                          classNames: 'row-cols-1 row-cols-sm-2 row-cols-lg-1 g-md-4',
-                          children: [
-                            FB5Col(
-                              classNames: 'order-0 order-sm-1 order-lg-0',
-                              child: Container(
-                                height: 20.0,
-                                width: double.infinity,
-                                color: Colors.black,
-                              ),
-                            ),
-                            FB5Col(
-                              classNames: 'order-1 order-sm-0 order-lg-1',
-                              child: Container(
-                                height: 20.0,
-                                width: double.infinity,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            FB5Col(
-                              classNames: 'order-sm-2 order-2',
-                              child: Container(
-                                height: 20.0,
-                                width: double.infinity,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    FB5Col(
-                      classNames: 'col-12 mt-5',
-                      clipBehavior: Clip.none,
-                      child: Container(
-                        color: Colors.red,
-                        width: double.infinity,
-                        height: 100.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+    Widget _wrapper(AppState state, { required Widget child }) {
+      switch(state.currentContainer) {
+        case CurrentContainer.defaultContainer:
+          return FB5Container(child: child,);
+        case CurrentContainer.sm:
+          return FB5Container.sm(child: child,);
+        case CurrentContainer.md:
+          return FB5Container.md(child: child,);
+        case CurrentContainer.lg:
+          return FB5Container.lg(child: child,);
+        case CurrentContainer.xl:
+          return FB5Container.xl(child: child,);
+        case CurrentContainer.xxl:
+          return FB5Container.xxl(child: child,);
+        case CurrentContainer.fluid:
+          return FB5Container.fluid(child: child,);
+      }
+    }
+
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: const CustomNavigationBar(),
+          body: SingleChildScrollView(
+            child: _wrapper(
+              state,
+              child: FB5Row(
+                classNames: 'mt-5 px-xs-3 px-lg-0 gx-4',
+                children: [
+                  FB5Col(
+                    classNames: 'col-12',
+                    child: const GettingStarted(),
+                  ),
+                  FB5Col(
+                    classNames: 'col-12 mt-5',
+                    child: const Containers(),
+                  ),
+                  FB5Col(
+                    classNames: 'mt-3',
+                    child: const TestingArea(),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -84,6 +84,7 @@ class FB5Col extends StatelessWidget {
     final offset = style?.offset;
     final padding = style?.padding;
     final margin = style?.margin;
+    final selfAlignment = style?.selfAlignment;
 
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       final screenData = BootstrapTheme.of(context);
@@ -150,7 +151,19 @@ class FB5Col extends StatelessWidget {
         xxl: padding?.xxl,
       );
 
+      final sa = screenData.breakPoints._currentSelfAlignment(
+        screenData.currentBreakPoint,
+        fromStyle: selfAlignment?.defaultAlignment,
+        xs: selfAlignment?.xs,
+        sm: selfAlignment?.sm,
+        md: selfAlignment?.md,
+        lg: selfAlignment?.lg,
+        xl: selfAlignment?.xl,
+        xxl: selfAlignment?.xxl,
+      );
+
       return Container(
+        alignment: sa,
         margin: cm,
         padding: cp,
         width: width?.floorToDouble() ?? defaultWidth,

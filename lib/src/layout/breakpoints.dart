@@ -405,6 +405,118 @@ class BreakPoints {
     return width;
   }
 
+  WrapCrossAlignment? _currentVerticalAlignment(
+      BreakPoint breakPoint, {
+        WrapCrossAlignment? fromStyle,
+        WrapCrossAlignment? xs,
+        WrapCrossAlignment? sm,
+        WrapCrossAlignment? md,
+        WrapCrossAlignment? lg,
+        WrapCrossAlignment? xl,
+        WrapCrossAlignment? xxl,
+      }) {
+    WrapCrossAlignment? alignment;
+
+    if (fromStyle != null) {
+      alignment = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      alignment = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      alignment = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      alignment = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      alignment = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      alignment = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      alignment = xxl;
+    }
+
+    return alignment;
+  }
+
+  WrapAlignment? _currentHorizontalAlignment(
+      BreakPoint breakPoint, {
+        WrapAlignment? fromStyle,
+        WrapAlignment? xs,
+        WrapAlignment? sm,
+        WrapAlignment? md,
+        WrapAlignment? lg,
+        WrapAlignment? xl,
+        WrapAlignment? xxl,
+      }) {
+    WrapAlignment? alignment;
+
+    if (fromStyle != null) {
+      alignment = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      alignment = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      alignment = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      alignment = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      alignment = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      alignment = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      alignment = xxl;
+    }
+
+    return alignment;
+  }
+
+  Alignment? _currentSelfAlignment(
+      BreakPoint breakPoint, {
+        Alignment? fromStyle,
+        Alignment? xs,
+        Alignment? sm,
+        Alignment? md,
+        Alignment? lg,
+        Alignment? xl,
+        Alignment? xxl,
+      }) {
+    Alignment? alignment;
+
+    if (fromStyle != null) {
+      alignment = fromStyle;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      alignment = xs;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      alignment = sm;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      alignment = md;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      alignment = lg;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      alignment = xl;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      alignment = xxl;
+    }
+
+    return alignment;
+  }
+
+
   List<BreakPoint> get _values => [xs, sm, md, lg, xl, xxl];
 }
 

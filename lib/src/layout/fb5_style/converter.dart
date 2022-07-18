@@ -9,6 +9,9 @@ class _WrapperStyle {
   final _FB5RowCols? rowCols;
   final FB5Size? size;
   final FB5Order? order;
+  final FB5SelfAlignment? selfAlignment;
+  final FB5VerticalAlignment? verticalAlignment;
+  final FB5HorizontalAlignment? horizontalAlignment;
 
   _WrapperStyle({
     this.margin,
@@ -19,6 +22,9 @@ class _WrapperStyle {
     this.rowCols,
     this.size,
     this.order,
+    this.selfAlignment,
+    this.verticalAlignment,
+    this.horizontalAlignment,
   });
 
   _WrapperStyle copyWith({
@@ -30,6 +36,9 @@ class _WrapperStyle {
     _FB5RowCols? rowCols,
     FB5Size? size,
     FB5Order? order,
+    FB5SelfAlignment? selfAlignment,
+    FB5VerticalAlignment? verticalAlignment,
+    FB5HorizontalAlignment? horizontalAlignment,
   }) =>
       _WrapperStyle(
         margin: margin ?? this.margin,
@@ -40,6 +49,9 @@ class _WrapperStyle {
         rowCols: rowCols ?? this.rowCols,
         size: size ?? this.size,
         order: order ?? this.order,
+        selfAlignment: selfAlignment ?? this.selfAlignment,
+        verticalAlignment: verticalAlignment ?? this.verticalAlignment,
+        horizontalAlignment: horizontalAlignment ?? this.horizontalAlignment,
       );
 }
 
@@ -57,6 +69,23 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
     // use prefix substring to include all possible classes
     // e.g m, mt, mb, etc.
     switch (prefix.substring(0, 1)) {
+      case 'a':
+        if (className.contains('align-items')) {
+          var verticalAlignment =
+              style.verticalAlignment ?? FB5VerticalAlignment();
+          var newVerticalAlignment =
+              verticalAlignment._copyWithClass(className);
+          style = style.copyWith(verticalAlignment: newVerticalAlignment);
+        }
+
+        if (className.contains('align-self')) {
+          var selfAlignment =
+              style.selfAlignment ?? FB5SelfAlignment();
+          var newSelfAlignment =
+          selfAlignment._copyWithClass(className);
+          style = style.copyWith(selfAlignment: newSelfAlignment);
+        }
+        break;
       case 'm':
         var margin = style.margin ?? FB5Margin();
         final newMargin = margin._copyWithClass(className) as FB5Margin;
@@ -78,7 +107,7 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
         style = style.copyWith(size: newSize);
         break;
       case 'o':
-      // o can be order or offset
+        // o can be order or offset
         if (prefix == 'offset') {
           var offset = style.offset ?? FB5Offset();
           final newOffset = offset._copyWithClass(className);
@@ -102,6 +131,15 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
         var rowCols = style.rowCols ?? _FB5RowCols();
         final newRowCols = rowCols._copyWithClass(className);
         style = style.copyWith(rowCols: newRowCols);
+        break;
+      case 'j':
+        if (className.contains('justify-content')) {
+          var horizontalAlignment =
+              style.horizontalAlignment ?? FB5HorizontalAlignment();
+          var newHorizontalAlignment =
+          horizontalAlignment._copyWithClass(className);
+          style = style.copyWith(horizontalAlignment: newHorizontalAlignment);
+        }
         break;
     }
   }
