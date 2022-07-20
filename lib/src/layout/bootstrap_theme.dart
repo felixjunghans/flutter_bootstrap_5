@@ -29,7 +29,7 @@ class BootstrapTheme extends StatelessWidget {
   }
 }
 
-class _InheritedBootstrapTheme extends InheritedTheme {
+class _InheritedBootstrapTheme extends InheritedWidget {
   const _InheritedBootstrapTheme({
     Key? key,
     required this.bootstrapTheme,
