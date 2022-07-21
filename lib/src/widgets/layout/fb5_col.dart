@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5Col extends StatelessWidget {
+class FB5Col extends FB5OrderWidget {
   const FB5Col._({
     super.key,
     this.height,
@@ -60,23 +60,6 @@ class FB5Col extends StatelessWidget {
         child: wrap(child),
       );
 
-  int _order(BoxConstraints constraints, ScreenData screenData,
-      BreakPoint currentBreakPoint) {
-    final order = style?.order;
-
-    return screenData.breakPoints._currentOrder(
-      constraints.maxWidth,
-      currentBreakPoint,
-      fromStyle: order?.defaultOrder,
-      xs: order?.xs,
-      sm: order?.sm,
-      md: order?.md,
-      lg: order?.lg,
-      xl: order?.xl,
-      xxl: order?.xxl,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final display = style?.display;
@@ -100,7 +83,7 @@ class FB5Col extends StatelessWidget {
         xxl: display?.xxl,
       );
 
-      if(!isVisible) return const SizedBox.shrink();
+      if (!isVisible) return const SizedBox.shrink();
 
       final width = screenData.breakPoints.currentWidth(
         constraints.maxWidth,

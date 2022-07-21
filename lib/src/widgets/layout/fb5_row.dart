@@ -144,7 +144,7 @@ class FB5Row extends StatelessWidget {
             margin: cm,
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final rc = screenData.breakPoints._currentRowCols(
+                final rc = screenData.breakPoints._currentRowColsWidth(
                   constraints.maxWidth,
                   screenData.currentBreakPoint,
                   fromStyle: rowCols?.defaultOrder,

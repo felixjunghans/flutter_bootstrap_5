@@ -366,7 +366,7 @@ class BreakPoints {
     return order ?? 0;
   }
 
-  double? _currentRowCols(
+  double? _currentRowColsWidth(
     double maxWidth,
     BreakPoint breakPoint, {
     _FB5RowColsNumber? fromStyle,
@@ -404,6 +404,45 @@ class BreakPoints {
 
     return width;
   }
+
+  int _currentRowCols(
+      BreakPoint breakPoint, {
+        _FB5RowColsNumber? fromStyle,
+        _FB5RowColsNumber? xs,
+        _FB5RowColsNumber? sm,
+        _FB5RowColsNumber? md,
+        _FB5RowColsNumber? lg,
+        _FB5RowColsNumber? xl,
+        _FB5RowColsNumber? xxl,
+        int defaultCount = 1,
+      }) {
+    int count = defaultCount;
+
+    if (fromStyle != null) {
+      count = fromStyle.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xs) && xs != null) {
+      count = xs.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.sm) && sm != null) {
+      count = sm.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.md) && md != null) {
+      count = md.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.lg) && lg != null) {
+      count = lg.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xl) && xl != null) {
+      count = xl.cols;
+    }
+    if (breakPoint.isBreakPointOrLarger(this.xxl) && xxl != null) {
+      count = xxl.cols;
+    }
+
+    return count;
+  }
+
 
   WrapCrossAlignment? _currentVerticalAlignment(
       BreakPoint breakPoint, {

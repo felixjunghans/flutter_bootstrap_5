@@ -2,8 +2,10 @@ library flutter_bootstrap5;
 
 import 'dart:ui';
 import 'dart:ui' as ui show TextHeightBehavior;
+import 'package:collection/collection.dart';
 
 import 'package:flutter/material.dart';
+import 'package:intersperse/intersperse.dart';
 
 part 'src/content/typography.dart';
 part 'src/layout/bootstrap_theme.dart';
@@ -27,6 +29,8 @@ part 'src/utilities/colors.dart';
 part 'src/utilities/spacing.dart';
 part 'src/widgets/flutter_bootstrap5.dart';
 part 'src/widgets/layout/fb5_col.dart';
+part 'src/widgets/layout/fb5_order.dart';
+part 'src/widgets/layout/fb5_grid.dart';
 part 'src/widgets/layout/fb5_container.dart';
 part 'src/widgets/layout/fb5_row.dart';
 part 'src/widgets/layout/div.dart';

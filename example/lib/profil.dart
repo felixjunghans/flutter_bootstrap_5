@@ -2,6 +2,7 @@ import 'package:example/cubits/app_cubit.dart';
 import 'package:example/cubits/app_state.dart';
 import 'package:example/widgets/containers.dart';
 import 'package:example/widgets/getting_started.dart';
+import 'package:example/widgets/grid_area.dart';
 import 'package:example/widgets/navigation_bar.dart';
 import 'package:example/widgets/testing_area.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,10 @@ class Profile extends StatelessWidget {
                   FB5Col(
                     classNames: 'mt-3',
                     child: const TestingArea(),
+                  ),
+                  FB5Col(
+                    classNames: 'mt-3',
+                    child: const GridArea(),
                   ),
                 ],
               ),
