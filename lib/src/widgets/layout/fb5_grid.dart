@@ -184,17 +184,15 @@ class FB5Grid extends StatelessWidget {
                     return IntrinsicHeight(
                       child: Row(
                         mainAxisAlignment: ha ?? MainAxisAlignment.start,
-                        crossAxisAlignment: va ?? CrossAxisAlignment.start,
+                        crossAxisAlignment: va ?? CrossAxisAlignment.stretch,
                         children: [
                           ...slice
                               .map<Widget>(
-                                (e) => Flexible(
-                                  child: ConstrainedBox(
-                                    constraints: BoxConstraints(
-                                      maxWidth: maxWidth,
-                                    ),
-                                    child: e,
+                                (e) => ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxWidth: maxWidth,
                                   ),
+                                  child: e,
                                 ),
                               )
                               .intersperse(
