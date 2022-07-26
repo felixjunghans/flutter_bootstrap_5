@@ -72,26 +72,29 @@ class _GridAreaState extends State<GridArea> {
             border: borderDark(context, opacity: 0.1),
             color: BootstrapTheme.of(context).colors.light,
           ),
-          child: FB5Grid(
-            classNames: _rowController.text,
+          child: FB5Grid.stacked(
+            maxChildExpand: 200.0,
             children: [
-              ...cols.map(
-                (col) => Container(
-                  padding: EdgeInsets.all(Random().nextDouble() * 50),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: col.color,
-                  ),
-                  child: CupertinoTextField.borderless(
-                    controller: col.controller,
-                    onEditingComplete: () {
-                      setState(() {});
-                    },
-                    style: TextStyle(
-                      color: BootstrapTheme.of(context).colors.white,
+              FB5Grid(
+                classNames: _rowController.text,
+                children: [
+                  ...cols.map(
+                    (col) => Container(
+                     // padding: EdgeInsets.all(Random().nextDouble() * 50),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: col.color,
+                      ),
+                      child: Text(
+                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
+                        overflow: TextOverflow.visible,
+                        style: TextStyle(
+                          color: BootstrapTheme.of(context).colors.white,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),

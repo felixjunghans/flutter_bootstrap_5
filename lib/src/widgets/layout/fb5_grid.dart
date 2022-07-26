@@ -4,6 +4,8 @@ class FB5Grid extends StatelessWidget {
   const FB5Grid._({
     Key? key,
     this.style,
+    this.maxChildExpand,
+    this.intrinsicHeight = true,
     required this.children,
   }) : super(key: key);
 
@@ -18,8 +20,24 @@ class FB5Grid extends StatelessWidget {
     );
   }
 
+  factory FB5Grid.stacked({
+    String? classNames,
+    required double maxChildExpand,
+    required List<Widget> children,
+  }) {
+    final style = _convertClassNamesToWrapperStyle(classNames);
+    return FB5Grid._(
+      style: style,
+      intrinsicHeight: false,
+      maxChildExpand: maxChildExpand,
+      children: children,
+    );
+  }
+
   // ignore: library_private_types_in_public_api
   final _WrapperStyle? style;
+  final bool intrinsicHeight;
+  final double? maxChildExpand;
   final List<Widget> children;
 
   MainAxisAlignment? _convertAlignment(WrapAlignment? alignment) {
@@ -181,27 +199,36 @@ class FB5Grid extends StatelessWidget {
                     final maxWidth =
                         (constraints.maxWidth - (hp * (rc - 1))) / rc;
 
-                    return IntrinsicHeight(
-                      child: Row(
-                        mainAxisAlignment: ha ?? MainAxisAlignment.start,
-                        crossAxisAlignment: va ?? CrossAxisAlignment.stretch,
-                        children: [
-                          ...slice
-                              .map<Widget>(
-                                (e) => ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    maxWidth: maxWidth,
-                                  ),
-                                  child: e,
+                    final child = Row(
+                      mainAxisAlignment: ha ?? MainAxisAlignment.start,
+                      crossAxisAlignment: va ?? CrossAxisAlignment.stretch,
+                      children: [
+                        ...slice
+                            .map<Widget>(
+                              (e) => ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: maxWidth,
                                 ),
-                              )
-                              .intersperse(
-                                SizedBox(
-                                  width: hp,
-                                ),
+                                child: e,
                               ),
-                        ],
-                      ),
+                            )
+                            .intersperse(
+                              SizedBox(
+                                width: hp,
+                              ),
+                            ),
+                      ],
+                    );
+
+                    if (!intrinsicHeight) {
+                      return ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: maxChildExpand!),
+                        child: child,
+                      );
+                    }
+
+                    return IntrinsicHeight(
+                      child: child,
                     );
                   },
                 ).intersperse(

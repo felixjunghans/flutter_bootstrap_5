@@ -70,7 +70,7 @@ class FB5HorizontalAlignment {
   }
 
   FB5HorizontalAlignment _copyWithClass4(List<String> definitions) {
-    final breakPoint = definitions[1];
+    final breakPoint = definitions[2];
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment, breakPoint: breakPoint);
   }
