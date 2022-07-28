@@ -99,13 +99,13 @@ class BreakPoints {
   double? currentWidth(
     double maxWidth,
     BreakPoint breakPoint, {
-    FB5ColSize? fromStyle,
-    FB5ColSize? xs,
-    FB5ColSize? sm,
-    FB5ColSize? md,
-    FB5ColSize? lg,
-    FB5ColSize? xl,
-    FB5ColSize? xxl,
+    _FB5ColSize? fromStyle,
+    _FB5ColSize? xs,
+    _FB5ColSize? sm,
+    _FB5ColSize? md,
+    _FB5ColSize? lg,
+    _FB5ColSize? xl,
+    _FB5ColSize? xxl,
     double? defaultWidth = double.infinity,
   }) =>
       _currentSizing(
@@ -124,13 +124,13 @@ class BreakPoints {
   double? currentOffset(
     double maxWidth,
     BreakPoint breakPoint, {
-    FB5ColOffset? fromStyle,
-    FB5ColOffset? xs,
-    FB5ColOffset? sm,
-    FB5ColOffset? md,
-    FB5ColOffset? lg,
-    FB5ColOffset? xl,
-    FB5ColOffset? xxl,
+    _FB5ColOffset? fromStyle,
+    _FB5ColOffset? xs,
+    _FB5ColOffset? sm,
+    _FB5ColOffset? md,
+    _FB5ColOffset? lg,
+    _FB5ColOffset? xl,
+    _FB5ColOffset? xxl,
   }) =>
       _currentSizing(maxWidth, breakPoint,
           fromStyle: fromStyle,
@@ -224,13 +224,13 @@ class BreakPoints {
   EdgeInsets? currentMargin(
     double spacer,
     BreakPoint breakPoint, {
-    FB5ContentMargin? fromStyle,
-    FB5ContentMargin? xs,
-    FB5ContentMargin? sm,
-    FB5ContentMargin? md,
-    FB5ContentMargin? lg,
-    FB5ContentMargin? xl,
-    FB5ContentMargin? xxl,
+    _FB5ContentMargin? fromStyle,
+    _FB5ContentMargin? xs,
+    _FB5ContentMargin? sm,
+    _FB5ContentMargin? md,
+    _FB5ContentMargin? lg,
+    _FB5ContentMargin? xl,
+    _FB5ContentMargin? xxl,
   }) =>
       _currentSpacing(
         spacer,
@@ -247,13 +247,13 @@ class BreakPoints {
   EdgeInsets? currentPadding(
     double spacer,
     BreakPoint breakPoint, {
-    FB5ContentPadding? fromStyle,
-    FB5ContentPadding? xs,
-    FB5ContentPadding? sm,
-    FB5ContentPadding? md,
-    FB5ContentPadding? lg,
-    FB5ContentPadding? xl,
-    FB5ContentPadding? xxl,
+    _FB5ContentPadding? fromStyle,
+    _FB5ContentPadding? xs,
+    _FB5ContentPadding? sm,
+    _FB5ContentPadding? md,
+    _FB5ContentPadding? lg,
+    _FB5ContentPadding? xl,
+    _FB5ContentPadding? xxl,
   }) =>
       _currentSpacing(
         spacer,
@@ -293,13 +293,13 @@ class BreakPoints {
 
   bool currentDisplay(
     BreakPoint breakPoint, {
-    FB5ContentDisplay? fromStyle,
-    FB5ContentDisplay? xs,
-    FB5ContentDisplay? sm,
-    FB5ContentDisplay? md,
-    FB5ContentDisplay? lg,
-    FB5ContentDisplay? xl,
-    FB5ContentDisplay? xxl,
+    _FB5ContentDisplay? fromStyle,
+    _FB5ContentDisplay? xs,
+    _FB5ContentDisplay? sm,
+    _FB5ContentDisplay? md,
+    _FB5ContentDisplay? lg,
+    _FB5ContentDisplay? xl,
+    _FB5ContentDisplay? xxl,
   }) {
     bool visible = true;
 
@@ -331,13 +331,13 @@ class BreakPoints {
   int _currentOrder(
     double maxWidth,
     BreakPoint breakPoint, {
-    FB5OrderNumber? fromStyle,
-    FB5OrderNumber? xs,
-    FB5OrderNumber? sm,
-    FB5OrderNumber? md,
-    FB5OrderNumber? lg,
-    FB5OrderNumber? xl,
-    FB5OrderNumber? xxl,
+    _FB5OrderNumber? fromStyle,
+    _FB5OrderNumber? xs,
+    _FB5OrderNumber? sm,
+    _FB5OrderNumber? md,
+    _FB5OrderNumber? lg,
+    _FB5OrderNumber? xl,
+    _FB5OrderNumber? xxl,
   }) {
     int? order;
 

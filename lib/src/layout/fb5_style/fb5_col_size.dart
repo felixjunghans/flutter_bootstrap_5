@@ -1,15 +1,15 @@
 part of flutter_bootstrap5;
 
-class FB5Size {
-  final FB5ColSize? defaultSize;
-  final FB5ColSize? xs;
-  final FB5ColSize? sm;
-  final FB5ColSize? md;
-  final FB5ColSize? lg;
-  final FB5ColSize? xl;
-  final FB5ColSize? xxl;
+class _FB5Size {
+  final _FB5ColSize? defaultSize;
+  final _FB5ColSize? xs;
+  final _FB5ColSize? sm;
+  final _FB5ColSize? md;
+  final _FB5ColSize? lg;
+  final _FB5ColSize? xl;
+  final _FB5ColSize? xxl;
 
-  FB5Size({
+  _FB5Size({
     this.defaultSize,
     this.xs,
     this.sm,
@@ -19,16 +19,16 @@ class FB5Size {
     this.xxl,
   });
 
-  FB5Size _copyWith({
-    FB5ColSize? defaultSize,
-    FB5ColSize? xs,
-    FB5ColSize? sm,
-    FB5ColSize? md,
-    FB5ColSize? lg,
-    FB5ColSize? xl,
-    FB5ColSize? xxl,
+  _FB5Size _copyWith({
+    _FB5ColSize? defaultSize,
+    _FB5ColSize? xs,
+    _FB5ColSize? sm,
+    _FB5ColSize? md,
+    _FB5ColSize? lg,
+    _FB5ColSize? xl,
+    _FB5ColSize? xxl,
   }) {
-    return FB5Size(
+    return _FB5Size(
       defaultSize: defaultSize ?? this.defaultSize,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5Size {
     );
   }
 
-  FB5Size _copyWithClass(String className) {
+  _FB5Size _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -52,13 +52,13 @@ class FB5Size {
     return this;
   }
 
-  FB5Size _copyWithClass2(List<String> definitions) {
+  _FB5Size _copyWithClass2(List<String> definitions) {
     final type = definitions.first;
     final numerator = int.tryParse(definitions.last);
     return _fromDefinitions(type: type, size: numerator);
   }
 
-  FB5Size _copyWithClass3(List<String> definitions) {
+  _FB5Size _copyWithClass3(List<String> definitions) {
     final type = definitions.first;
     final breakPoint = definitions[1];
     final numerator = int.tryParse(definitions.last);
@@ -66,14 +66,14 @@ class FB5Size {
         type: type, size: numerator, breakPoint: breakPoint);
   }
 
-  FB5Size _fromDefinitions({
+  _FB5Size _fromDefinitions({
     required String type,
     int? size,
     String? breakPoint,
   }) {
     if (size == null || size < 0 || size > 12) return this;
 
-    final colSize = FB5ColSize._(numerator: size);
+    final colSize = _FB5ColSize._(numerator: size);
 
     switch (breakPoint) {
       case 'xs':
@@ -94,8 +94,8 @@ class FB5Size {
   }
 }
 
-class FB5ColSize implements _FB5Sizing {
-  const FB5ColSize._({
+class _FB5ColSize implements _FB5Sizing {
+  const _FB5ColSize._({
     required this.numerator,
   });
 

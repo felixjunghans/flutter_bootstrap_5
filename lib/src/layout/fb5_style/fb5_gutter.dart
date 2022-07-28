@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5Gutter extends _ResponsiveSpacing {
+class _FB5Gutter extends _ResponsiveSpacing {
   final Gutter? defaultGutter;
   @override
   final Gutter? xs;
@@ -15,7 +15,7 @@ class FB5Gutter extends _ResponsiveSpacing {
   @override
   final Gutter? xxl;
 
-  FB5Gutter({
+  _FB5Gutter({
     this.defaultGutter,
     this.xs,
     this.sm,
@@ -25,7 +25,7 @@ class FB5Gutter extends _ResponsiveSpacing {
     this.xxl,
   });
 
-  FB5Gutter _copyWith({
+  _FB5Gutter _copyWith({
     Gutter? defaultGutter,
     Gutter? xs,
     Gutter? sm,
@@ -34,7 +34,7 @@ class FB5Gutter extends _ResponsiveSpacing {
     Gutter? xl,
     Gutter? xxl,
   }) {
-    return FB5Gutter(
+    return _FB5Gutter(
       defaultGutter: this.defaultGutter?._add(defaultGutter) ?? defaultGutter,
       xs: this.xs?._add(xs) ?? xs,
       sm: this.sm?._add(sm) ?? sm,
@@ -46,7 +46,7 @@ class FB5Gutter extends _ResponsiveSpacing {
   }
 
   @override
-  FB5Gutter _fromDefinitions(
+  _FB5Gutter _fromDefinitions(
       {required String type, double? size, String? breakPoint}) {
     if (size == null) return this;
 

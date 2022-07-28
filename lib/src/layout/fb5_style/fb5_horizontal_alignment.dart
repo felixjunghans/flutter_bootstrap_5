@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5HorizontalAlignment {
+class _FB5HorizontalAlignment {
   final WrapAlignment? defaultAlignment;
   final WrapAlignment? xs;
   final WrapAlignment? sm;
@@ -9,7 +9,7 @@ class FB5HorizontalAlignment {
   final WrapAlignment? xl;
   final WrapAlignment? xxl;
 
-  FB5HorizontalAlignment({
+  _FB5HorizontalAlignment({
     this.defaultAlignment,
     this.xs,
     this.sm,
@@ -19,7 +19,7 @@ class FB5HorizontalAlignment {
     this.xxl,
   });
 
-  FB5HorizontalAlignment _copyWith({
+  _FB5HorizontalAlignment _copyWith({
     WrapAlignment? defaultAlignment,
     WrapAlignment? xs,
     WrapAlignment? sm,
@@ -28,7 +28,7 @@ class FB5HorizontalAlignment {
     WrapAlignment? xl,
     WrapAlignment? xxl,
   }) {
-    return FB5HorizontalAlignment(
+    return _FB5HorizontalAlignment(
       defaultAlignment: defaultAlignment ?? this.defaultAlignment,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5HorizontalAlignment {
     );
   }
 
-  FB5HorizontalAlignment _copyWithClass(String className) {
+  _FB5HorizontalAlignment _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -64,18 +64,18 @@ class FB5HorizontalAlignment {
     return null;
   }
 
-  FB5HorizontalAlignment _copyWithClass3(List<String> definitions) {
+  _FB5HorizontalAlignment _copyWithClass3(List<String> definitions) {
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment);
   }
 
-  FB5HorizontalAlignment _copyWithClass4(List<String> definitions) {
+  _FB5HorizontalAlignment _copyWithClass4(List<String> definitions) {
     final breakPoint = definitions[2];
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment, breakPoint: breakPoint);
   }
 
-  FB5HorizontalAlignment _fromDefinitions({
+  _FB5HorizontalAlignment _fromDefinitions({
     WrapAlignment? alignment,
     String? breakPoint,
   }) {

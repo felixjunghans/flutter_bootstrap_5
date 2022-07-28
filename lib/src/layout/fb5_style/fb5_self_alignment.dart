@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5SelfAlignment {
+class _FB5SelfAlignment {
   final Alignment? defaultAlignment;
   final Alignment? xs;
   final Alignment? sm;
@@ -9,7 +9,7 @@ class FB5SelfAlignment {
   final Alignment? xl;
   final Alignment? xxl;
 
-  FB5SelfAlignment({
+  _FB5SelfAlignment({
     this.defaultAlignment,
     this.xs,
     this.sm,
@@ -19,7 +19,7 @@ class FB5SelfAlignment {
     this.xxl,
   });
 
-  FB5SelfAlignment _copyWith({
+  _FB5SelfAlignment _copyWith({
     Alignment? defaultAlignment,
     Alignment? xs,
     Alignment? sm,
@@ -28,7 +28,7 @@ class FB5SelfAlignment {
     Alignment? xl,
     Alignment? xxl,
   }) {
-    return FB5SelfAlignment(
+    return _FB5SelfAlignment(
       defaultAlignment: defaultAlignment ?? this.defaultAlignment,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5SelfAlignment {
     );
   }
 
-  FB5SelfAlignment _copyWithClass(String className) {
+  _FB5SelfAlignment _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -61,18 +61,18 @@ class FB5SelfAlignment {
     return null;
   }
 
-  FB5SelfAlignment _copyWithClass3(List<String> definitions) {
+  _FB5SelfAlignment _copyWithClass3(List<String> definitions) {
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment);
   }
 
-  FB5SelfAlignment _copyWithClass4(List<String> definitions) {
+  _FB5SelfAlignment _copyWithClass4(List<String> definitions) {
     final breakPoint = definitions[1];
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment, breakPoint: breakPoint);
   }
 
-  FB5SelfAlignment _fromDefinitions({
+  _FB5SelfAlignment _fromDefinitions({
     Alignment? alignment,
     String? breakPoint,
   }) {

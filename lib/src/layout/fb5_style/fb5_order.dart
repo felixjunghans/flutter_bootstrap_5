@@ -1,15 +1,15 @@
 part of flutter_bootstrap5;
 
-class FB5Order {
-  final FB5OrderNumber? defaultOrder;
-  final FB5OrderNumber? xs;
-  final FB5OrderNumber? sm;
-  final FB5OrderNumber? md;
-  final FB5OrderNumber? lg;
-  final FB5OrderNumber? xl;
-  final FB5OrderNumber? xxl;
+class _FB5Order {
+  final _FB5OrderNumber? defaultOrder;
+  final _FB5OrderNumber? xs;
+  final _FB5OrderNumber? sm;
+  final _FB5OrderNumber? md;
+  final _FB5OrderNumber? lg;
+  final _FB5OrderNumber? xl;
+  final _FB5OrderNumber? xxl;
 
-  FB5Order({
+  _FB5Order({
     this.defaultOrder,
     this.xs,
     this.sm,
@@ -19,16 +19,16 @@ class FB5Order {
     this.xxl,
   });
 
-  FB5Order _copyWith({
-    FB5OrderNumber? defaultOrder,
-    FB5OrderNumber? xs,
-    FB5OrderNumber? sm,
-    FB5OrderNumber? md,
-    FB5OrderNumber? lg,
-    FB5OrderNumber? xl,
-    FB5OrderNumber? xxl,
+  _FB5Order _copyWith({
+    _FB5OrderNumber? defaultOrder,
+    _FB5OrderNumber? xs,
+    _FB5OrderNumber? sm,
+    _FB5OrderNumber? md,
+    _FB5OrderNumber? lg,
+    _FB5OrderNumber? xl,
+    _FB5OrderNumber? xxl,
   }) {
-    return FB5Order(
+    return _FB5Order(
       defaultOrder: defaultOrder ?? this.defaultOrder,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5Order {
     );
   }
 
-  FB5Order _copyWithClass(String className) {
+  _FB5Order _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -52,13 +52,13 @@ class FB5Order {
     return this;
   }
 
-  FB5Order _copyWithClass2(List<String> definitions) {
+  _FB5Order _copyWithClass2(List<String> definitions) {
     final type = definitions.first;
     final numerator = int.tryParse(definitions.last);
     return _fromDefinitions(type: type, order: numerator);
   }
 
-  FB5Order _copyWithClass3(List<String> definitions) {
+  _FB5Order _copyWithClass3(List<String> definitions) {
     final type = definitions.first;
     final breakPoint = definitions[1];
     final numerator = int.tryParse(definitions.last);
@@ -66,14 +66,14 @@ class FB5Order {
         type: type, order: numerator, breakPoint: breakPoint);
   }
 
-  FB5Order _fromDefinitions({
+  _FB5Order _fromDefinitions({
     required String type,
     int? order,
     String? breakPoint,
   }) {
     if (order == null || order < 0) return this;
 
-    final orderNumber = FB5OrderNumber._(order: order);
+    final orderNumber = _FB5OrderNumber._(order: order);
 
     switch (breakPoint) {
       case 'xs':
@@ -94,8 +94,8 @@ class FB5Order {
   }
 }
 
-class FB5OrderNumber {
-  const FB5OrderNumber._({
+class _FB5OrderNumber {
+  const _FB5OrderNumber._({
     required this.order,
   });
 

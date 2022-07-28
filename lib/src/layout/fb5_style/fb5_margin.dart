@@ -1,21 +1,21 @@
 part of flutter_bootstrap5;
 
-class FB5Margin extends _ResponsiveSpacing {
-  final FB5ContentMargin? defaultMargin;
+class _FB5Margin extends _ResponsiveSpacing {
+  final _FB5ContentMargin? defaultMargin;
   @override
-  final FB5ContentMargin? xs;
+  final _FB5ContentMargin? xs;
   @override
-  final FB5ContentMargin? sm;
+  final _FB5ContentMargin? sm;
   @override
-  final FB5ContentMargin? md;
+  final _FB5ContentMargin? md;
   @override
-  final FB5ContentMargin? lg;
+  final _FB5ContentMargin? lg;
   @override
-  final FB5ContentMargin? xl;
+  final _FB5ContentMargin? xl;
   @override
-  final FB5ContentMargin? xxl;
+  final _FB5ContentMargin? xxl;
 
-  FB5Margin({
+  _FB5Margin({
     this.defaultMargin,
     this.xs,
     this.sm,
@@ -25,16 +25,16 @@ class FB5Margin extends _ResponsiveSpacing {
     this.xxl,
   });
 
-  FB5Margin _copyWith({
-    FB5ContentMargin? defaultMargin,
-    FB5ContentMargin? xs,
-    FB5ContentMargin? sm,
-    FB5ContentMargin? md,
-    FB5ContentMargin? lg,
-    FB5ContentMargin? xl,
-    FB5ContentMargin? xxl,
+  _FB5Margin _copyWith({
+    _FB5ContentMargin? defaultMargin,
+    _FB5ContentMargin? xs,
+    _FB5ContentMargin? sm,
+    _FB5ContentMargin? md,
+    _FB5ContentMargin? lg,
+    _FB5ContentMargin? xl,
+    _FB5ContentMargin? xxl,
   }) {
-    return FB5Margin(
+    return _FB5Margin(
       defaultMargin: this.defaultMargin?._add(defaultMargin) ?? defaultMargin,
       xs: this.xs?._add(xs) ?? xs,
       sm: this.sm?._add(sm) ?? sm,
@@ -46,37 +46,37 @@ class FB5Margin extends _ResponsiveSpacing {
   }
 
   @override
-  FB5Margin _fromDefinitions({
+  _FB5Margin _fromDefinitions({
     required String type,
     double? size,
     String? breakPoint,
   }) {
     if (size == null) return this;
 
-    FB5ContentMargin? margin;
+    _FB5ContentMargin? margin;
 
     switch (type) {
       case 'm':
-        margin = FB5ContentMargin._(
+        margin = _FB5ContentMargin._(
             left: size, right: size, top: size, bottom: size);
         break;
       case 'mt':
-        margin = FB5ContentMargin._(top: size);
+        margin = _FB5ContentMargin._(top: size);
         break;
       case 'mb':
-        margin = FB5ContentMargin._(bottom: size);
+        margin = _FB5ContentMargin._(bottom: size);
         break;
       case 'ms':
-        margin = FB5ContentMargin._(left: size);
+        margin = _FB5ContentMargin._(left: size);
         break;
       case 'me':
-        margin = FB5ContentMargin._(right: size);
+        margin = _FB5ContentMargin._(right: size);
         break;
       case 'mx':
-        margin = FB5ContentMargin._(left: size, right: size);
+        margin = _FB5ContentMargin._(left: size, right: size);
         break;
       case 'my':
-        margin = FB5ContentMargin._(top: size, bottom: size);
+        margin = _FB5ContentMargin._(top: size, bottom: size);
         break;
     }
 
@@ -99,7 +99,7 @@ class FB5Margin extends _ResponsiveSpacing {
   }
 }
 
-class FB5ContentMargin implements _FB5Spacing {
+class _FB5ContentMargin implements _FB5Spacing {
   @override
   final double? left;
   @override
@@ -109,17 +109,17 @@ class FB5ContentMargin implements _FB5Spacing {
   @override
   final double? bottom;
 
-  const FB5ContentMargin._({
+  const _FB5ContentMargin._({
     this.left,
     this.right,
     this.top,
     this.bottom,
   });
 
-  FB5ContentMargin _add(FB5ContentMargin? margin) {
+  _FB5ContentMargin _add(_FB5ContentMargin? margin) {
     if (margin == null) return this;
 
-    return FB5ContentMargin._(
+    return _FB5ContentMargin._(
       left: margin.left ?? left,
       right: margin.right ?? right,
       bottom: margin.bottom ?? bottom,

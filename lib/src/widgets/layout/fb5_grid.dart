@@ -100,11 +100,11 @@ class FB5Grid extends StatelessWidget {
         List<Widget> sortedChildren = children
           ..sort(
             (a, b) {
-              final aOrder = a is FB5OrderWidget
+              final aOrder = a is _FB5OrderWidget
                   ? a._order(
                       constraints, screenData, screenData.currentBreakPoint)
                   : 0;
-              var bOrder = b is FB5OrderWidget
+              var bOrder = b is _FB5OrderWidget
                   ? b._order(
                       constraints, screenData, screenData.currentBreakPoint)
                   : 0;

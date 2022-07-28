@@ -1,17 +1,17 @@
 part of flutter_bootstrap5;
 
 class _WrapperStyle {
-  final FB5Margin? margin;
-  final FB5Padding? padding;
-  final FB5Gutter? gutter;
-  final FB5Offset? offset;
-  final FB5Display? display;
+  final _FB5Margin? margin;
+  final _FB5Padding? padding;
+  final _FB5Gutter? gutter;
+  final _FB5Offset? offset;
+  final _FB5Display? display;
   final _FB5RowCols? rowCols;
-  final FB5Size? size;
-  final FB5Order? order;
-  final FB5SelfAlignment? selfAlignment;
-  final FB5VerticalAlignment? verticalAlignment;
-  final FB5HorizontalAlignment? horizontalAlignment;
+  final _FB5Size? size;
+  final _FB5Order? order;
+  final _FB5SelfAlignment? selfAlignment;
+  final _FB5VerticalAlignment? verticalAlignment;
+  final _FB5HorizontalAlignment? horizontalAlignment;
 
   _WrapperStyle({
     this.margin,
@@ -28,17 +28,17 @@ class _WrapperStyle {
   });
 
   _WrapperStyle copyWith({
-    FB5Margin? margin,
-    FB5Padding? padding,
-    FB5Gutter? gutter,
-    FB5Offset? offset,
-    FB5Display? display,
+    _FB5Margin? margin,
+    _FB5Padding? padding,
+    _FB5Gutter? gutter,
+    _FB5Offset? offset,
+    _FB5Display? display,
     _FB5RowCols? rowCols,
-    FB5Size? size,
-    FB5Order? order,
-    FB5SelfAlignment? selfAlignment,
-    FB5VerticalAlignment? verticalAlignment,
-    FB5HorizontalAlignment? horizontalAlignment,
+    _FB5Size? size,
+    _FB5Order? order,
+    _FB5SelfAlignment? selfAlignment,
+    _FB5VerticalAlignment? verticalAlignment,
+    _FB5HorizontalAlignment? horizontalAlignment,
   }) =>
       _WrapperStyle(
         margin: margin ?? this.margin,
@@ -72,7 +72,7 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
       case 'a':
         if (className.contains('align-items')) {
           var verticalAlignment =
-              style.verticalAlignment ?? FB5VerticalAlignment();
+              style.verticalAlignment ?? _FB5VerticalAlignment();
           var newVerticalAlignment =
               verticalAlignment._copyWithClass(className);
           style = style.copyWith(verticalAlignment: newVerticalAlignment);
@@ -80,50 +80,50 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
 
         if (className.contains('align-self')) {
           var selfAlignment =
-              style.selfAlignment ?? FB5SelfAlignment();
+              style.selfAlignment ?? _FB5SelfAlignment();
           var newSelfAlignment =
           selfAlignment._copyWithClass(className);
           style = style.copyWith(selfAlignment: newSelfAlignment);
         }
         break;
       case 'm':
-        var margin = style.margin ?? FB5Margin();
-        final newMargin = margin._copyWithClass(className) as FB5Margin;
+        var margin = style.margin ?? _FB5Margin();
+        final newMargin = margin._copyWithClass(className) as _FB5Margin;
         style = style.copyWith(margin: newMargin);
         break;
       case 'p':
-        var padding = style.padding ?? FB5Padding();
-        final newPadding = padding._copyWithClass(className) as FB5Padding;
+        var padding = style.padding ?? _FB5Padding();
+        final newPadding = padding._copyWithClass(className) as _FB5Padding;
         style = style.copyWith(padding: newPadding);
         break;
       case 'g':
-        var gutter = style.gutter ?? FB5Gutter();
-        final newGutter = gutter._copyWithClass(className) as FB5Gutter;
+        var gutter = style.gutter ?? _FB5Gutter();
+        final newGutter = gutter._copyWithClass(className) as _FB5Gutter;
         style = style.copyWith(gutter: newGutter);
         break;
       case 'c':
-        var size = style.size ?? FB5Size();
+        var size = style.size ?? _FB5Size();
         final newSize = size._copyWithClass(className);
         style = style.copyWith(size: newSize);
         break;
       case 'o':
         // o can be order or offset
         if (prefix == 'offset') {
-          var offset = style.offset ?? FB5Offset();
+          var offset = style.offset ?? _FB5Offset();
           final newOffset = offset._copyWithClass(className);
           style = style.copyWith(offset: newOffset);
           break;
         }
 
         if (prefix == 'order') {
-          var order = style.order ?? FB5Order();
+          var order = style.order ?? _FB5Order();
           final newOrder = order._copyWithClass(className);
           style = style.copyWith(order: newOrder);
           break;
         }
         break;
       case 'd':
-        var display = style.display ?? FB5Display();
+        var display = style.display ?? _FB5Display();
         final newDisplay = display._copyWithClass(className);
         style = style.copyWith(display: newDisplay);
         break;
@@ -135,7 +135,7 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
       case 'j':
         if (className.contains('justify-content')) {
           var horizontalAlignment =
-              style.horizontalAlignment ?? FB5HorizontalAlignment();
+              style.horizontalAlignment ?? _FB5HorizontalAlignment();
           var newHorizontalAlignment =
           horizontalAlignment._copyWithClass(className);
           style = style.copyWith(horizontalAlignment: newHorizontalAlignment);

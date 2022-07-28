@@ -4,7 +4,7 @@ EdgeInsets? margin(BuildContext context, String classNames) {
   final screenData = BootstrapTheme.of(context);
   final classList = classNames.trim().split(" ");
 
-  var margin = FB5Margin();
+  var margin = _FB5Margin();
   for (final className in classList) {
     final prefix = className.trim().split("-").first;
 
@@ -14,7 +14,7 @@ EdgeInsets? margin(BuildContext context, String classNames) {
     // e.g m, mt, mb, etc.
     switch (prefix.substring(0, 1)) {
       case 'm':
-        final newMargin = margin._copyWithClass(className) as FB5Margin;
+        final newMargin = margin._copyWithClass(className) as _FB5Margin;
         margin = newMargin;
         break;
     }
@@ -37,7 +37,7 @@ EdgeInsets? padding(BuildContext context, String classNames) {
   final screenData = BootstrapTheme.of(context);
   final classList = classNames.trim().split(" ");
 
-  var padding = FB5Padding();
+  var padding = _FB5Padding();
   for (final className in classList) {
     final prefix = className.trim().split("-").first;
 
@@ -47,7 +47,7 @@ EdgeInsets? padding(BuildContext context, String classNames) {
     // e.g p, pt, pb, etc.
     switch (prefix.substring(0, 1)) {
       case 'p':
-        final newPadding = padding._copyWithClass(className) as FB5Padding;
+        final newPadding = padding._copyWithClass(className) as _FB5Padding;
         padding = newPadding;
         break;
     }

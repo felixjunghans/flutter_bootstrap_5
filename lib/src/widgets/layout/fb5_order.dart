@@ -1,7 +1,7 @@
 part of flutter_bootstrap5;
 
-abstract class FB5OrderWidget extends StatelessWidget {
-  const FB5OrderWidget({Key? key }) : super(key: key);
+abstract class _FB5OrderWidget extends StatelessWidget {
+  const _FB5OrderWidget({Key? key }) : super(key: key);
 
   _WrapperStyle? get style;
 

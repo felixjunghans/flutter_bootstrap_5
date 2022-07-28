@@ -13,21 +13,22 @@ class GridArea extends StatefulWidget {
 }
 
 class _GridAreaState extends State<GridArea> {
-  late final TextEditingController _rowController;
+  late final TextEditingController _gridController;
   late List<_ColValue> cols;
 
   @override
   void initState() {
-    _rowController = TextEditingController();
+    _gridController = TextEditingController(text: 'row-cols-4');
     cols = List.generate(4, (index) => _generateCol());
     super.initState();
   }
 
   _ColValue _generateCol() {
-    const className = 'col-6';
+    const text =
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam';
     final color =
         Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    return _ColValue(TextEditingController(text: className), color);
+    return _ColValue(TextEditingController(text: text), color);
   }
 
   void _addCol() {
@@ -53,8 +54,8 @@ class _GridAreaState extends State<GridArea> {
           height: 16.0,
         ),
         CupertinoTextField(
-          controller: _rowController,
-          placeholder: 'Change row classNames...',
+          controller: _gridController,
+          placeholder: 'Change grid classNames... e.g. row-cols-4',
           onEditingComplete: () {
             setState(() {});
           },
@@ -72,29 +73,24 @@ class _GridAreaState extends State<GridArea> {
             border: borderDark(context, opacity: 0.1),
             color: BootstrapTheme.of(context).colors.light,
           ),
-          child: FB5Grid.stacked(
-            maxChildExpand: 200.0,
+          child: FB5Grid(
+            classNames: _gridController.text,
             children: [
-              FB5Grid(
-                classNames: _rowController.text,
-                children: [
-                  ...cols.map(
-                    (col) => Container(
-                     // padding: EdgeInsets.all(Random().nextDouble() * 50),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: col.color,
-                      ),
-                      child: Text(
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
-                        overflow: TextOverflow.visible,
-                        style: TextStyle(
-                          color: BootstrapTheme.of(context).colors.white,
-                        ),
-                      ),
+              ...cols.map(
+                (col) => Container(
+                  // padding: EdgeInsets.all(Random().nextDouble() * 50),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: col.color,
+                  ),
+                  child: CupertinoTextField.borderless(
+                    controller: col.controller,
+                    maxLines: null,
+                    style: TextStyle(
+                      color: BootstrapTheme.of(context).colors.white,
                     ),
                   ),
-                ],
+                ),
               ),
             ],
           ),

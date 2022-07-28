@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5Col extends FB5OrderWidget {
+class FB5Col extends _FB5OrderWidget {
   const FB5Col._({
     super.key,
     this.height,

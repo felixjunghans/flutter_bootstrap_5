@@ -1,15 +1,15 @@
 part of flutter_bootstrap5;
 
-class FB5Display {
-  final FB5ContentDisplay? defaultDisplay;
-  final FB5ContentDisplay? xs;
-  final FB5ContentDisplay? sm;
-  final FB5ContentDisplay? md;
-  final FB5ContentDisplay? lg;
-  final FB5ContentDisplay? xl;
-  final FB5ContentDisplay? xxl;
+class _FB5Display {
+  final _FB5ContentDisplay? defaultDisplay;
+  final _FB5ContentDisplay? xs;
+  final _FB5ContentDisplay? sm;
+  final _FB5ContentDisplay? md;
+  final _FB5ContentDisplay? lg;
+  final _FB5ContentDisplay? xl;
+  final _FB5ContentDisplay? xxl;
 
-  FB5Display({
+  _FB5Display({
     this.defaultDisplay,
     this.xs,
     this.sm,
@@ -19,16 +19,16 @@ class FB5Display {
     this.xxl,
   });
 
-  FB5Display _copyWith({
-    FB5ContentDisplay? defaultDisplay,
-    FB5ContentDisplay? xs,
-    FB5ContentDisplay? sm,
-    FB5ContentDisplay? md,
-    FB5ContentDisplay? lg,
-    FB5ContentDisplay? xl,
-    FB5ContentDisplay? xxl,
+  _FB5Display _copyWith({
+    _FB5ContentDisplay? defaultDisplay,
+    _FB5ContentDisplay? xs,
+    _FB5ContentDisplay? sm,
+    _FB5ContentDisplay? md,
+    _FB5ContentDisplay? lg,
+    _FB5ContentDisplay? xl,
+    _FB5ContentDisplay? xxl,
   }) {
-    return FB5Display(
+    return _FB5Display(
       defaultDisplay: defaultDisplay ?? this.defaultDisplay,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5Display {
     );
   }
 
-  FB5Display _copyWithClass(String className) {
+  _FB5Display _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -52,12 +52,12 @@ class FB5Display {
     return this;
   }
 
-  FB5Display _copyWithClass2(List<String> definitions) {
+  _FB5Display _copyWithClass2(List<String> definitions) {
     final type = definitions.last;
     return _fromDefinitions(type: type);
   }
 
-  FB5Display _copyWithClass3(List<String> definitions) {
+  _FB5Display _copyWithClass3(List<String> definitions) {
     final type = definitions.last;
     final breakPoint = definitions[1];
     return _fromDefinitions(
@@ -65,18 +65,18 @@ class FB5Display {
         breakPoint: breakPoint);
   }
 
-  FB5Display _fromDefinitions({
+  _FB5Display _fromDefinitions({
     required String type,
     String? breakPoint,
   }) {
-    FB5ContentDisplay? display;
+    _FB5ContentDisplay? display;
 
     switch (type) {
       case 'none':
-        display = const FB5ContentDisplay._(visible: false);
+        display = const _FB5ContentDisplay._(visible: false);
         break;
       case 'block':
-        display = const FB5ContentDisplay._(visible: true);
+        display = const _FB5ContentDisplay._(visible: true);
         break;
     }
 
@@ -99,10 +99,10 @@ class FB5Display {
   }
 }
 
-class FB5ContentDisplay {
+class _FB5ContentDisplay {
   final bool visible;
 
-  const FB5ContentDisplay._({
+  const _FB5ContentDisplay._({
     this.visible = true,
   });
 }

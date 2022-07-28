@@ -1,6 +1,6 @@
 part of flutter_bootstrap5;
 
-class FB5VerticalAlignment {
+class _FB5VerticalAlignment {
   final WrapCrossAlignment? defaultAlignment;
   final WrapCrossAlignment? xs;
   final WrapCrossAlignment? sm;
@@ -9,7 +9,7 @@ class FB5VerticalAlignment {
   final WrapCrossAlignment? xl;
   final WrapCrossAlignment? xxl;
 
-  FB5VerticalAlignment({
+  _FB5VerticalAlignment({
     this.defaultAlignment,
     this.xs,
     this.sm,
@@ -19,7 +19,7 @@ class FB5VerticalAlignment {
     this.xxl,
   });
 
-  FB5VerticalAlignment _copyWith({
+  _FB5VerticalAlignment _copyWith({
     WrapCrossAlignment? defaultAlignment,
     WrapCrossAlignment? xs,
     WrapCrossAlignment? sm,
@@ -28,7 +28,7 @@ class FB5VerticalAlignment {
     WrapCrossAlignment? xl,
     WrapCrossAlignment? xxl,
   }) {
-    return FB5VerticalAlignment(
+    return _FB5VerticalAlignment(
       defaultAlignment: defaultAlignment ?? this.defaultAlignment,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5VerticalAlignment {
     );
   }
 
-  FB5VerticalAlignment _copyWithClass(String className) {
+  _FB5VerticalAlignment _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -61,18 +61,18 @@ class FB5VerticalAlignment {
     return null;
   }
 
-  FB5VerticalAlignment _copyWithClass3(List<String> definitions) {
+  _FB5VerticalAlignment _copyWithClass3(List<String> definitions) {
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment);
   }
 
-  FB5VerticalAlignment _copyWithClass4(List<String> definitions) {
+  _FB5VerticalAlignment _copyWithClass4(List<String> definitions) {
     final breakPoint = definitions[2];
     final alignment = _fromString(definitions.last);
     return _fromDefinitions(alignment: alignment, breakPoint: breakPoint);
   }
 
-  FB5VerticalAlignment _fromDefinitions({
+  _FB5VerticalAlignment _fromDefinitions({
     WrapCrossAlignment? alignment,
     String? breakPoint,
   }) {

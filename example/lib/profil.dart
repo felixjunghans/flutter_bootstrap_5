@@ -52,11 +52,11 @@ class Profile extends StatelessWidget {
                     child: const Containers(),
                   ),
                   FB5Col(
-                    classNames: 'mt-3',
+                    classNames: 'mt-5',
                     child: const TestingArea(),
                   ),
                   FB5Col(
-                    classNames: 'mt-3',
+                    classNames: 'my-5',
                     child: const GridArea(),
                   ),
                 ],

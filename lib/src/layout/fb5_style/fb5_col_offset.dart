@@ -1,15 +1,15 @@
 part of flutter_bootstrap5;
 
-class FB5Offset {
-  final FB5ColOffset? defaultOffset;
-  final FB5ColOffset? xs;
-  final FB5ColOffset? sm;
-  final FB5ColOffset? md;
-  final FB5ColOffset? lg;
-  final FB5ColOffset? xl;
-  final FB5ColOffset? xxl;
+class _FB5Offset {
+  final _FB5ColOffset? defaultOffset;
+  final _FB5ColOffset? xs;
+  final _FB5ColOffset? sm;
+  final _FB5ColOffset? md;
+  final _FB5ColOffset? lg;
+  final _FB5ColOffset? xl;
+  final _FB5ColOffset? xxl;
 
-  FB5Offset({
+  _FB5Offset({
     this.defaultOffset,
     this.xs,
     this.sm,
@@ -19,16 +19,16 @@ class FB5Offset {
     this.xxl,
   });
 
-  FB5Offset _copyWith({
-    FB5ColOffset? defaultOffset,
-    FB5ColOffset? xs,
-    FB5ColOffset? sm,
-    FB5ColOffset? md,
-    FB5ColOffset? lg,
-    FB5ColOffset? xl,
-    FB5ColOffset? xxl,
+  _FB5Offset _copyWith({
+    _FB5ColOffset? defaultOffset,
+    _FB5ColOffset? xs,
+    _FB5ColOffset? sm,
+    _FB5ColOffset? md,
+    _FB5ColOffset? lg,
+    _FB5ColOffset? xl,
+    _FB5ColOffset? xxl,
   }) {
-    return FB5Offset(
+    return _FB5Offset(
       defaultOffset: defaultOffset ?? this.defaultOffset,
       xs: xs ?? this.xs,
       sm: sm ?? this.sm,
@@ -39,7 +39,7 @@ class FB5Offset {
     );
   }
 
-  FB5Offset _copyWithClass(String className) {
+  _FB5Offset _copyWithClass(String className) {
     final definitions = className.split("-");
 
     switch (definitions.length) {
@@ -52,13 +52,13 @@ class FB5Offset {
     return this;
   }
 
-  FB5Offset _copyWithClass2(List<String> definitions) {
+  _FB5Offset _copyWithClass2(List<String> definitions) {
     final type = definitions.first;
     final numerator = int.tryParse(definitions.last);
     return _fromDefinitions(type: type, size: numerator);
   }
 
-  FB5Offset _copyWithClass3(List<String> definitions) {
+  _FB5Offset _copyWithClass3(List<String> definitions) {
     final type = definitions.first;
     final breakPoint = definitions[1];
     final numerator = int.tryParse(definitions.last);
@@ -66,14 +66,14 @@ class FB5Offset {
         type: type, size: numerator, breakPoint: breakPoint);
   }
 
-  FB5Offset _fromDefinitions({
+  _FB5Offset _fromDefinitions({
     required String type,
     int? size,
     String? breakPoint,
   }) {
     if (size == null || size < 0 || size > 12) return this;
 
-    final offset = FB5ColOffset._(numerator: size);
+    final offset = _FB5ColOffset._(numerator: size);
 
     switch (breakPoint) {
       case 'xs':
@@ -94,8 +94,8 @@ class FB5Offset {
   }
 }
 
-class FB5ColOffset implements _FB5Sizing {
-  const FB5ColOffset._({
+class _FB5ColOffset implements _FB5Sizing {
+  const _FB5ColOffset._({
     required this.numerator,
   });
 

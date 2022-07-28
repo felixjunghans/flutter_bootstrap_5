@@ -1,21 +1,21 @@
 part of flutter_bootstrap5;
 
-class FB5Padding extends _ResponsiveSpacing {
-  final FB5ContentPadding? defaultPadding;
+class _FB5Padding extends _ResponsiveSpacing {
+  final _FB5ContentPadding? defaultPadding;
   @override
-  final FB5ContentPadding? xs;
+  final _FB5ContentPadding? xs;
   @override
-  final FB5ContentPadding? sm;
+  final _FB5ContentPadding? sm;
   @override
-  final FB5ContentPadding? md;
+  final _FB5ContentPadding? md;
   @override
-  final FB5ContentPadding? lg;
+  final _FB5ContentPadding? lg;
   @override
-  final FB5ContentPadding? xl;
+  final _FB5ContentPadding? xl;
   @override
-  final FB5ContentPadding? xxl;
+  final _FB5ContentPadding? xxl;
 
-  FB5Padding({
+  _FB5Padding({
     this.defaultPadding,
     this.xs,
     this.sm,
@@ -25,16 +25,16 @@ class FB5Padding extends _ResponsiveSpacing {
     this.xxl,
   });
 
-  FB5Padding _copyWith({
-    FB5ContentPadding? defaultPadding,
-    FB5ContentPadding? xs,
-    FB5ContentPadding? sm,
-    FB5ContentPadding? md,
-    FB5ContentPadding? lg,
-    FB5ContentPadding? xl,
-    FB5ContentPadding? xxl,
+  _FB5Padding _copyWith({
+    _FB5ContentPadding? defaultPadding,
+    _FB5ContentPadding? xs,
+    _FB5ContentPadding? sm,
+    _FB5ContentPadding? md,
+    _FB5ContentPadding? lg,
+    _FB5ContentPadding? xl,
+    _FB5ContentPadding? xxl,
   }) {
-    return FB5Padding(
+    return _FB5Padding(
       defaultPadding:
           this.defaultPadding?._add(defaultPadding) ?? defaultPadding,
       xs: this.xs?._add(xs) ?? xs,
@@ -47,34 +47,34 @@ class FB5Padding extends _ResponsiveSpacing {
   }
 
   @override
-  FB5Padding _fromDefinitions(
+  _FB5Padding _fromDefinitions(
       {required String type, double? size, String? breakPoint}) {
     if (size == null) return this;
 
-    FB5ContentPadding? padding;
+    _FB5ContentPadding? padding;
 
     switch (type) {
       case 'p':
-        padding = FB5ContentPadding._(
+        padding = _FB5ContentPadding._(
             left: size, right: size, top: size, bottom: size);
         break;
       case 'pt':
-        padding = FB5ContentPadding._(top: size);
+        padding = _FB5ContentPadding._(top: size);
         break;
       case 'pb':
-        padding = FB5ContentPadding._(bottom: size);
+        padding = _FB5ContentPadding._(bottom: size);
         break;
       case 'ps':
-        padding = FB5ContentPadding._(left: size);
+        padding = _FB5ContentPadding._(left: size);
         break;
       case 'pe':
-        padding = FB5ContentPadding._(right: size);
+        padding = _FB5ContentPadding._(right: size);
         break;
       case 'px':
-        padding = FB5ContentPadding._(left: size, right: size);
+        padding = _FB5ContentPadding._(left: size, right: size);
         break;
       case 'py':
-        padding = FB5ContentPadding._(top: size, bottom: size);
+        padding = _FB5ContentPadding._(top: size, bottom: size);
         break;
     }
 
@@ -97,7 +97,7 @@ class FB5Padding extends _ResponsiveSpacing {
   }
 }
 
-class FB5ContentPadding implements _FB5Spacing {
+class _FB5ContentPadding implements _FB5Spacing {
   @override
   final double? left;
   @override
@@ -107,17 +107,17 @@ class FB5ContentPadding implements _FB5Spacing {
   @override
   final double? bottom;
 
-  const FB5ContentPadding._({
+  const _FB5ContentPadding._({
     this.left,
     this.right,
     this.top,
     this.bottom,
   });
 
-  FB5ContentPadding? _add(FB5ContentPadding? padding) {
+  _FB5ContentPadding? _add(_FB5ContentPadding? padding) {
     if (padding == null) return this;
 
-    return FB5ContentPadding._(
+    return _FB5ContentPadding._(
       left: padding.left ?? left,
       right: padding.right ?? right,
       bottom: padding.bottom ?? bottom,
