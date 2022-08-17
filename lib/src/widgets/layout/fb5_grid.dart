@@ -208,6 +208,8 @@ class FB5Grid extends StatelessWidget {
               children: [
                 ...sortedChildren.slices(rc).map<Widget>(
                   (slice) {
+                    if(rc == 1) return slice.first;
+
                     final maxWidth =
                         (constraints.maxWidth - (hp * (rc - 1))) / rc;
 
