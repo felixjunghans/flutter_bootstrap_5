@@ -142,6 +142,29 @@ class FB5TextSetting {
     this.style = const TextStyle(),
   });
 
+  /// based on 16px default font size
+  factory FB5TextSetting.fromFontSize(double fontSize,
+      {TextStyle style = const TextStyle(), double defaultFontSize = 16.0}) {
+    final fontSizeMultiplier = fontSize / defaultFontSize;
+    double? fontSizeMultiplierSmall;
+    double? viewPortMultiplier;
+
+    if (fontSizeMultiplier > 1.5) {
+      fontSizeMultiplierSmall = 1.275 + (fontSizeMultiplier - 1.5) / 10;
+      viewPortMultiplier = 0.3 + ((fontSizeMultiplier - 1.5) / 0.25) * 0.3;
+    }
+
+    return FB5TextSetting(
+      fontSizeMultiplier: fontSizeMultiplier,
+      fontSizeMultiplierSmall: fontSizeMultiplierSmall,
+      viewPortMultiplier: viewPortMultiplier,
+      style: style,
+    );
+  }
+
+  FB5TextSetting convertToFontSize(double fontSize) =>
+      FB5TextSetting.fromFontSize(fontSize, style: style);
+
   FB5TextSetting copyWidth({
     double? fontSizeMultiplier,
     double? fontSizeMultiplierSmall,

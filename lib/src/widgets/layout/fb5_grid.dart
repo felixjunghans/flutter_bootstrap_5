@@ -6,22 +6,26 @@ class FB5Grid extends StatelessWidget {
     this.style,
     this.maxChildExpand,
     this.intrinsicHeight = true,
+    this.sortChildren = false,
     required this.children,
   }) : super(key: key);
 
   factory FB5Grid({
     String? classNames,
+    bool sortChildren = false,
     required List<Widget> children,
   }) {
     final style = _convertClassNamesToWrapperStyle(classNames);
     return FB5Grid._(
       style: style,
+      sortChildren: sortChildren,
       children: children,
     );
   }
 
   factory FB5Grid.stacked({
     String? classNames,
+    bool sortChildren = false,
     required double maxChildExpand,
     required List<Widget> children,
   }) {
@@ -30,6 +34,7 @@ class FB5Grid extends StatelessWidget {
       style: style,
       intrinsicHeight: false,
       maxChildExpand: maxChildExpand,
+      sortChildren: sortChildren,
       children: children,
     );
   }
@@ -39,6 +44,7 @@ class FB5Grid extends StatelessWidget {
   final bool intrinsicHeight;
   final double? maxChildExpand;
   final List<Widget> children;
+  final bool sortChildren;
 
   MainAxisAlignment? _convertAlignment(WrapAlignment? alignment) {
     switch (alignment) {
@@ -97,20 +103,25 @@ class FB5Grid extends StatelessWidget {
 
         if (!isVisible) return const SizedBox.shrink();
 
-        List<Widget> sortedChildren = children
-          ..sort(
-            (a, b) {
-              final aOrder = a is _FB5OrderWidget
-                  ? a._order(
-                      constraints, screenData, screenData.currentBreakPoint)
-                  : 0;
-              var bOrder = b is _FB5OrderWidget
-                  ? b._order(
-                      constraints, screenData, screenData.currentBreakPoint)
-                  : 0;
-              return aOrder.compareTo(bOrder);
-            },
-          );
+        List<Widget> sortedChildren;
+        if (sortChildren) {
+          sortedChildren = children
+            ..sort(
+              (a, b) {
+                final aOrder = a is _FB5OrderWidget
+                    ? a._order(
+                        constraints, screenData, screenData.currentBreakPoint)
+                    : 0;
+                var bOrder = b is _FB5OrderWidget
+                    ? b._order(
+                        constraints, screenData, screenData.currentBreakPoint)
+                    : 0;
+                return aOrder.compareTo(bOrder);
+              },
+            );
+        } else {
+          sortedChildren = children;
+        }
 
         final cg = screenData.breakPoints.currentGutter(
           screenData.fontSize,
@@ -189,7 +200,8 @@ class FB5Grid extends StatelessWidget {
           margin: cm,
           padding: cp,
           child: LayoutBuilder(
-            builder: (context, constraints) => Column(
+            builder: (context, constraints) {
+              return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -237,7 +249,8 @@ class FB5Grid extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            );
+            },
           ),
         );
       },

@@ -47,14 +47,28 @@ class Containers extends StatelessWidget {
                             items: [
                               const DropdownMenuItem(
                                 value: CurrentContainer.defaultContainer,
-                                child: Text("FB5Container()"),
-                              ),
-                              ...CurrentContainer.values.where((element) => element != CurrentContainer.defaultContainer).map(
-                                (e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text("FB5Container.${e.name}()"),
+                                child: Text(
+                                  "FB5Container()",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
+                              ...CurrentContainer.values
+                                  .where((element) =>
+                                      element !=
+                                      CurrentContainer.defaultContainer)
+                                  .map(
+                                    (e) => DropdownMenuItem(
+                                      value: e,
+                                      child: Text(
+                                        "FB5Container.${e.name}()",
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                             ],
                             value: state.currentContainer,
                             onChanged: (value) {
