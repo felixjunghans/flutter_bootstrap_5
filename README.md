@@ -7,7 +7,8 @@ It is based on the well-known CSS framework Bootstrap 5 and offers many features
 </h2>
 <p align="center">If you like this package it would be nice if you would give a Like ❤️ <a href="https://github.com/felixjunghans/flutter_bootstrap_5">and a Star ⭐</a> to support the project!</p>
 
-
+<br />
+<br />
 If you want to have a quick overview of the most important functions and test them directly, you can do so here
 
 [FLUTTER BOOTSTRAP 5 EXAMPLE WEBSITE](https://flutter-bootstrap-5.web.app/#/)
