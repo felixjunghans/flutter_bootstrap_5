@@ -25,6 +25,7 @@ part 'src/layout/fb5_style/fb5_row_cols.dart';
 part 'src/layout/fb5_style/fb5_style.dart';
 part 'src/layout/media_query_builder.dart';
 part 'src/utilities/borders.dart';
+part 'src/utilities/helper.dart';
 part 'src/utilities/colors.dart';
 part 'src/utilities/spacing.dart';
 part 'src/widgets/flutter_bootstrap5.dart';

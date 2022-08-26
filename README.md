@@ -226,4 +226,9 @@ There are some helper functions to add bootstrap functionality to Flutter widget
         border: borderPrimary(context), // borderSecondary, borderSuccess, borderDanger, etc...
       ),
     );
+
+
+    // responsiveValue & responsiveValueOrNull
+    // if you need different values for different breakPoints
+    final width = responsiveValue<double>(context, defaultValue: 300.0, md: 350.0, xl: 400.0);
 ```
