@@ -34,7 +34,7 @@ class FB5Row extends StatelessWidget {
     final horizontalAlignment = style?.horizontalAlignment;
 
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
-      final isVisible = screenData.breakPoints.currentDisplay(
+      final isVisible = screenData.breakPoints._currentDisplay(
         screenData.currentBreakPoint,
         fromStyle: display?.defaultDisplay,
         xs: display?.xs,
@@ -71,7 +71,7 @@ class FB5Row extends StatelessWidget {
       final maxWidthHorizontalGutter =
           constraints.maxWidth + (cg?.left ?? 0.0) + (cg?.right ?? 0.0);
 
-      final co = screenData.breakPoints.currentOffset(
+      final co = screenData.breakPoints._currentOffset(
         maxWidthHorizontalGutter,
         screenData.currentBreakPoint,
         fromStyle: offset?.defaultOffset,
@@ -83,7 +83,7 @@ class FB5Row extends StatelessWidget {
         xxl: offset?.xxl,
       );
 
-      final cp = screenData.breakPoints.currentPadding(
+      final cp = screenData.breakPoints._currentPadding(
         screenData.fontSize,
         screenData.currentBreakPoint,
         fromStyle: padding?.defaultPadding,
@@ -95,7 +95,7 @@ class FB5Row extends StatelessWidget {
         xxl: padding?.xxl,
       );
 
-      final cm = screenData.breakPoints.currentMargin(
+      final cm = screenData.breakPoints._currentMargin(
         screenData.fontSize,
         screenData.currentBreakPoint,
         fromStyle: margin?.defaultMargin,

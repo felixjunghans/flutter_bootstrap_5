@@ -38,7 +38,6 @@ class _InheritedBootstrapTheme extends InheritedWidget {
 
   final BootstrapTheme bootstrapTheme;
 
-  @override
   Widget wrap(BuildContext context, Widget child) {
     return BootstrapTheme(
         data: bootstrapTheme.data, builder: (_) => super.child);

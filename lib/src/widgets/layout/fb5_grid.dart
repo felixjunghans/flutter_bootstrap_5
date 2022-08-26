@@ -90,7 +90,7 @@ class FB5Grid extends StatelessWidget {
 
     return MediaQueryBuilder(
       builder: (context, constraints, screenData) {
-        final isVisible = screenData.breakPoints.currentDisplay(
+        final isVisible = screenData.breakPoints._currentDisplay(
           screenData.currentBreakPoint,
           fromStyle: display?.defaultDisplay,
           xs: display?.xs,
@@ -135,7 +135,7 @@ class FB5Grid extends StatelessWidget {
           xxl: gutter?.xxl,
         );
 
-        final cp = screenData.breakPoints.currentPadding(
+        final cp = screenData.breakPoints._currentPadding(
           screenData.fontSize,
           screenData.currentBreakPoint,
           fromStyle: padding?.defaultPadding,
@@ -147,7 +147,7 @@ class FB5Grid extends StatelessWidget {
           xxl: padding?.xxl,
         );
 
-        final cm = screenData.breakPoints.currentMargin(
+        final cm = screenData.breakPoints._currentMargin(
           screenData.fontSize,
           screenData.currentBreakPoint,
           fromStyle: margin?.defaultMargin,

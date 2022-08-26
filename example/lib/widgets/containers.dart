@@ -1,10 +1,8 @@
 import 'package:example/cubits/app_cubit.dart';
 import 'package:example/cubits/app_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class Containers extends StatelessWidget {

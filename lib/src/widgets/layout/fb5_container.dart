@@ -94,6 +94,7 @@ class FB5Container extends StatelessWidget {
       );
 
   final Widget? child;
+  // ignore: library_private_types_in_public_api
   final _ContainerBreakPoint? containerBreakPoint;
   final Alignment alignment;
 

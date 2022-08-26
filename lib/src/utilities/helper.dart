@@ -43,7 +43,7 @@ T? responsiveValueOrNull<T>(
   final breakPoint = screenData.currentBreakPoint;
   final breakPoints = screenData.breakPoints;
 
-  var value;
+  T? value;
 
   if (breakPoint.isBreakPointOrLarger(breakPoints.xs) && xs != null) {
     value = xs;

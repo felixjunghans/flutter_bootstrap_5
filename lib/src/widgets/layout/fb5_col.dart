@@ -39,6 +39,8 @@ class FB5Col extends _FB5OrderWidget {
     );
   }
 
+
+  @override
   // ignore: library_private_types_in_public_api
   final _WrapperStyle? style;
   final Decoration? decoration;
@@ -64,7 +66,7 @@ class FB5Col extends _FB5OrderWidget {
   Widget build(BuildContext context) {
     final display = style?.display;
     final size = style?.size;
-    final offset = style?.offset;
+    // final offset = style?.offset;
     final padding = style?.padding;
     final margin = style?.margin;
     final selfAlignment = style?.selfAlignment;
@@ -72,7 +74,7 @@ class FB5Col extends _FB5OrderWidget {
     return MediaQueryBuilder(builder: (context, constraints, screenData) {
       final screenData = BootstrapTheme.of(context);
 
-      final isVisible = screenData.breakPoints.currentDisplay(
+      final isVisible = screenData.breakPoints._currentDisplay(
         screenData.currentBreakPoint,
         fromStyle: display?.defaultDisplay,
         xs: display?.xs,
@@ -85,7 +87,7 @@ class FB5Col extends _FB5OrderWidget {
 
       if (!isVisible) return const SizedBox.shrink();
 
-      final width = screenData.breakPoints.currentWidth(
+      final width = screenData.breakPoints._currentWidth(
         constraints.maxWidth,
         screenData.currentBreakPoint,
         fromStyle: size?.defaultSize,
@@ -98,7 +100,7 @@ class FB5Col extends _FB5OrderWidget {
         defaultWidth: defaultWidth,
       );
 
-      final cm = screenData.breakPoints.currentMargin(
+      final cm = screenData.breakPoints._currentMargin(
         screenData.fontSize,
         screenData.currentBreakPoint,
         fromStyle: margin?.defaultMargin,
@@ -110,7 +112,8 @@ class FB5Col extends _FB5OrderWidget {
         xxl: margin?.xxl,
       );
 
-      final co = screenData.breakPoints.currentOffset(
+      /*
+      final co = screenData.breakPoints._currentOffset(
         constraints.maxWidth,
         screenData.currentBreakPoint,
         fromStyle: offset?.defaultOffset,
@@ -121,8 +124,9 @@ class FB5Col extends _FB5OrderWidget {
         xl: offset?.xl,
         xxl: offset?.xxl,
       );
+      */
 
-      final cp = screenData.breakPoints.currentPadding(
+      final cp = screenData.breakPoints._currentPadding(
         screenData.fontSize,
         screenData.currentBreakPoint,
         fromStyle: padding?.defaultPadding,

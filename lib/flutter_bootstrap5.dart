@@ -34,7 +34,6 @@ part 'src/widgets/layout/fb5_order.dart';
 part 'src/widgets/layout/fb5_grid.dart';
 part 'src/widgets/layout/fb5_container.dart';
 part 'src/widgets/layout/fb5_row.dart';
-part 'src/widgets/layout/div.dart';
 part 'src/widgets/typography/display1.dart';
 part 'src/widgets/typography/display2.dart';
 part 'src/widgets/typography/display3.dart';

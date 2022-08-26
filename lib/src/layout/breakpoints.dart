@@ -96,7 +96,7 @@ class BreakPoints {
     return width;
   }
 
-  double? currentWidth(
+  double? _currentWidth(
     double maxWidth,
     BreakPoint breakPoint, {
     _FB5ColSize? fromStyle,
@@ -121,7 +121,7 @@ class BreakPoints {
         defaultSize: defaultWidth,
       );
 
-  double? currentOffset(
+  double? _currentOffset(
     double maxWidth,
     BreakPoint breakPoint, {
     _FB5ColOffset? fromStyle,
@@ -221,7 +221,7 @@ class BreakPoints {
     );
   }
 
-  EdgeInsets? currentMargin(
+  EdgeInsets? _currentMargin(
     double spacer,
     BreakPoint breakPoint, {
     _FB5ContentMargin? fromStyle,
@@ -244,7 +244,7 @@ class BreakPoints {
         xxl: xxl,
       );
 
-  EdgeInsets? currentPadding(
+  EdgeInsets? _currentPadding(
     double spacer,
     BreakPoint breakPoint, {
     _FB5ContentPadding? fromStyle,
@@ -291,7 +291,7 @@ class BreakPoints {
         multiplier: 0.5,
       );
 
-  bool currentDisplay(
+  bool _currentDisplay(
     BreakPoint breakPoint, {
     _FB5ContentDisplay? fromStyle,
     _FB5ContentDisplay? xs,

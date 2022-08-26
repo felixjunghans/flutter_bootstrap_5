@@ -20,7 +20,7 @@ EdgeInsets? margin(BuildContext context, String classNames) {
     }
   }
 
-  return screenData.breakPoints.currentMargin(
+  return screenData.breakPoints._currentMargin(
     screenData.fontSize,
     screenData.currentBreakPoint,
     fromStyle: margin.defaultMargin,
@@ -53,7 +53,7 @@ EdgeInsets? padding(BuildContext context, String classNames) {
     }
   }
 
-  return screenData.breakPoints.currentPadding(
+  return screenData.breakPoints._currentPadding(
     screenData.fontSize,
     screenData.currentBreakPoint,
     fromStyle: padding.defaultPadding,
