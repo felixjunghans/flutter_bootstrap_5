@@ -1,6 +1,6 @@
 name: flutter_bootstrap5
 description: A Flutter implementation of many Bootstrap 5 functionalities.
-version: 1.0.0
+version: 1.0.0+1
 homepage: https://github.com/felixjunghans/flutter_bootstrap_5
 
 environment:

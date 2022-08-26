@@ -180,3 +180,50 @@ FB5Grid are used to represent a grid system of your children. They should not co
       ],
     ),
 ```
+
+## Helper
+### BootstrapTheme
+
+Information about the current screen size and breakpoint is returned by the BootstrapTheme. 
+For this, nothing more is necessary than to execute the following function.
+```dart
+    final screenData = BootstrapTheme.of(context);
+```
+
+It also offers useful functions. For example, the query whether the current breakpoint is larger or smaller than a certain breakpoint.
+
+```dart
+    final screenData = BootstrapTheme.of(context);
+    screenData.currentBreakPoint.isBreakPointOrSmaller(screenData.breakPoints.xl);
+
+    screenData.currentBreakPoint.isBreakPointOrLarger(screenData.breakPoints.xl);
+```
+
+### Functions
+There are some helper functions to add bootstrap functionality to Flutter widgets:
+
+```dart
+    // e.g. add a 4rem margin-top to a Container
+    Container(
+      margin: margin(context, 'mt-4'),
+    );
+
+    // e.g. add a 2rem padding to a Container
+    Container(
+      margin: padding(context, 'p-2'),
+    );
+    
+    // add a borderRadius to a Container
+    Container(
+      decoration: BoxDecoration(
+        borderRadius: rounded(context), // rounded1 rounded2 rounded3 rounded4 rounded5 roundedPill
+      ),
+    );
+
+    // add a border to a Container
+    Container(
+      decoration: BoxDecoration(
+        border: borderPrimary(context), // borderSecondary, borderSuccess, borderDanger, etc...
+      ),
+    );
+```
