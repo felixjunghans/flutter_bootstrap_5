@@ -14,22 +14,36 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget _wrapper(AppState state, { required Widget child }) {
-      switch(state.currentContainer) {
+    Widget _wrapper(AppState state, {required Widget child}) {
+      switch (state.currentContainer) {
         case CurrentContainer.defaultContainer:
-          return FB5Container(child: child,);
+          return FB5Container(
+            child: child,
+          );
         case CurrentContainer.sm:
-          return FB5Container.sm(child: child,);
+          return FB5Container.sm(
+            child: child,
+          );
         case CurrentContainer.md:
-          return FB5Container.md(child: child,);
+          return FB5Container.md(
+            child: child,
+          );
         case CurrentContainer.lg:
-          return FB5Container.lg(child: child,);
+          return FB5Container.lg(
+            child: child,
+          );
         case CurrentContainer.xl:
-          return FB5Container.xl(child: child,);
+          return FB5Container.xl(
+            child: child,
+          );
         case CurrentContainer.xxl:
-          return FB5Container.xxl(child: child,);
+          return FB5Container.xxl(
+            child: child,
+          );
         case CurrentContainer.fluid:
-          return FB5Container.fluid(child: child,);
+          return FB5Container.fluid(
+            child: child,
+          );
       }
     }
 
@@ -51,6 +65,7 @@ class Profile extends StatelessWidget {
                     classNames: 'col-12 mt-5',
                     child: const Containers(),
                   ),
+
                   FB5Col(
                     classNames: 'mt-5',
                     child: const TestingArea(),

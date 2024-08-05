@@ -18,8 +18,10 @@ class BootstrapTheme extends StatelessWidget {
     return data;
   }
 
+
   @override
   Widget build(BuildContext context) {
+
     return _InheritedBootstrapTheme(
       bootstrapTheme: this,
       child: Builder(
@@ -27,6 +29,8 @@ class BootstrapTheme extends StatelessWidget {
       ),
     );
   }
+
+
 }
 
 class _InheritedBootstrapTheme extends InheritedWidget {
@@ -61,9 +65,9 @@ class ScreenData {
 
   static ScreenData fallBack() => ScreenData(
         breakPoints: const BreakPoints(),
-        currentBreakPoint: _BootstrapBreakPoints.xs,
+        currentBreakPoint: MediaQueryBuilder.BootStrapGetBreakPoint(),
         screenSize: Size.fromWidth(
-          _BootstrapBreakPoints.xs.maxWidth,
+          MediaQueryBuilder.BootStrapGetSize(),
         ),
         fontSize: defaultFontSize,
         containerBreakPoints: const ContainerBreakPoints(),

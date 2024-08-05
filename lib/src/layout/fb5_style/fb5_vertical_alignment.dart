@@ -53,10 +53,13 @@ class _FB5VerticalAlignment {
   }
 
   WrapCrossAlignment? _fromString(String alignment) {
-    switch(alignment) {
-      case 'start': return WrapCrossAlignment.start;
-      case 'center': return WrapCrossAlignment.center;
-      case 'end': return WrapCrossAlignment.end;
+    switch (alignment) {
+      case 'start':
+        return WrapCrossAlignment.start;
+      case 'center':
+        return WrapCrossAlignment.center;
+      case 'end':
+        return WrapCrossAlignment.end;
     }
     return null;
   }

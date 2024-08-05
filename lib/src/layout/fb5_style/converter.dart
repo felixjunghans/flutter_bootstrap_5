@@ -68,6 +68,8 @@ _WrapperStyle? _convertClassNamesToWrapperStyle(String? classNames) {
 
     // use prefix substring to include all possible classes
     // e.g m, mt, mb, etc.
+
+
     switch (prefix.substring(0, 1)) {
       case 'a':
         if (className.contains('align-items')) {

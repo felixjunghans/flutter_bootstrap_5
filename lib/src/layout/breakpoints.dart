@@ -18,6 +18,14 @@ class _BootstrapContainerBreakPoints {
   static const double xl = 1140;
   static const double xxl = 1320;
 }
+class BootstrapContainerBreakPoints {
+  static const double xs = double.infinity;
+  static const double sm = 540;
+  static const double md = 720;
+  static const double lg = 960;
+  static const double xl = 1140;
+  static const double xxl = 1320;
+}
 
 class ContainerBreakPoints {
   final double xs;

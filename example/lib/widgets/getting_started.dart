@@ -55,7 +55,7 @@ class GettingStarted extends StatelessWidget {
                         ),
                         Text(
                           'Notice. Changing the font size also affects all other relative values (e.g. margin and padding), as these are calculated in "rem". For example, the top slider has a padding of p-5, which means that it should use 5 times the default font size as padding.',
-                          style: Theme.of(context).textTheme.caption,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       ],
                     );

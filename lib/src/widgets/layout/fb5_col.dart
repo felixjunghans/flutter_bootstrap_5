@@ -39,7 +39,6 @@ class FB5Col extends _FB5OrderWidget {
     );
   }
 
-
   @override
   // ignore: library_private_types_in_public_api
   final _WrapperStyle? style;
@@ -86,6 +85,7 @@ class FB5Col extends _FB5OrderWidget {
       );
 
       if (!isVisible) return const SizedBox.shrink();
+
 
       final width = screenData.breakPoints._currentWidth(
         constraints.maxWidth,

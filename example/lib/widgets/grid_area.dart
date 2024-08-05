@@ -46,7 +46,7 @@ class _GridAreaState extends State<GridArea> {
         ),
         Text(
           'You can change the classes of the cols by clicking on the text, changing it and confirming with Enter.',
-          style: Theme.of(context).textTheme.caption,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(
           height: 16.0,

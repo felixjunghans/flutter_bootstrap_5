@@ -75,6 +75,7 @@ class _FB5Size {
 
     final colSize = _FB5ColSize._(numerator: size);
 
+
     switch (breakPoint) {
       case 'xs':
         return _copyWith(xs: colSize);
